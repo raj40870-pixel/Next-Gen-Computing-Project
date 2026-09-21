@@ -68,17 +68,23 @@ def run_full_pipeline():
         checkpoint_dir="checkpoints"
     )
     ckpt_path = os.path.join("checkpoints", "best_stgnn.pt")
+    loaded = False
     if os.path.exists(ckpt_path):
-        print(f"[+] Found trained checkpoint at {ckpt_path}. Loading weights directly...")
-        ckpt = torch.load(ckpt_path, map_location=device)
-        stgnn_model.load_state_dict(ckpt["model_state_dict"])
-    else:
+        try:
+            ckpt = torch.load(ckpt_path, map_location=device)
+            stgnn_model.load_state_dict(ckpt["model_state_dict"])
+            print(f"[+] Found compatible trained checkpoint at {ckpt_path}. Loaded weights.")
+            loaded = True
+        except Exception:
+            print("[*] Graph structure updated (now all 23 Punjab districts). Retraining ST-GNN...")
+
+    if not loaded:
         history = trainer.fit(
             train_data=splits["train"],
             val_data=splits["val"],
-            epochs=25,
+            epochs=15,
             batch_size=32,
-            patience=5,
+            patience=4,
             verbose=True
         )
 

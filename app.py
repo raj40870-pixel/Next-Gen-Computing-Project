@@ -148,7 +148,7 @@ st.markdown("<div class='sub-header'>Fusing Sentinel-1 InSAR Land Subsidence & I
 # Top KPIs Row
 col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
-    st.metric("Monitoring Nodes", f"{len(district_meta)} Districts", "Punjab & Haryana")
+    st.metric("Monitoring Nodes", f"{len(district_meta)} Districts", "State of Punjab (100%)")
 with col2:
     avg_depth = df_timeseries[df_timeseries["date"] == df_timeseries["date"].max()]["water_depth_mbgl"].mean()
     st.metric("Avg Water Table Depth", f"{avg_depth:.1f} mbgl", "meters below ground")
@@ -176,13 +176,13 @@ if menu_choice == "🔄 Live Satellite Sync Hub":
     # Sync action card
     c_btn1, c_btn2, c_btn3 = st.columns([4, 4, 2])
     with c_btn1:
-        if st.button("⚡ Sync Live Satellite Data Now (All 15 Stations)", type="primary"):
+        if st.button("⚡ Sync Live Satellite Data Now (All 23 Punjab Districts)", type="primary"):
             from src.live_sync import LiveSatelliteSync
-            with st.spinner("Connecting to satellites and running live ST-GNN inference..."):
+            with st.spinner("Connecting to satellites and running live ST-GNN inference across Punjab..."):
                 syncer = LiveSatelliteSync()
                 res = syncer.sync_all_districts()
                 st.cache_data.clear()
-                st.success(f"Synchronization successful! {res['active_nodes_synced']} stations updated at {res['last_sync_timestamp']}.")
+                st.success(f"Synchronization successful! All {res['active_nodes_synced']} districts of Punjab updated at {res['last_sync_timestamp']}.")
                 time.sleep(1)
                 st.rerun()
 
@@ -211,7 +211,7 @@ if menu_choice == "🔄 Live Satellite Sync Hub":
     st.divider()
 
     # Live Station Telemetry Table
-    st.markdown("### 📊 Real-Time Station Telemetry (Punjab & Haryana)")
+    st.markdown("### 📊 Real-Time Station Telemetry (All 23 Districts of Punjab)")
     if sync_info and "telemetry" in sync_info:
         df_telemetry = pd.DataFrame(sync_info["telemetry"])
         display_cols = [
@@ -240,8 +240,8 @@ if menu_choice == "🔄 Live Satellite Sync Hub":
         crit_dists = ps.get("critical_districts", [])
         if crit_dists:
             st.warning(
-                f"⚠️ **High Drawdown Warning:** {len(crit_dists)} districts are currently classified in Critical / Over-Exploited condition based on recent satellite observations: "
-                + ", ".join(crit_dists[:6]) + "..."
+                f"⚠️ **High Drawdown Warning:** {len(crit_dists)} districts in Punjab are currently classified in Critical / Over-Exploited condition based on recent satellite observations: "
+                + ", ".join(crit_dists[:8]) + "..."
             )
         else:
             st.success("All monitoring stations operating within safe aquifer extraction margins.")
@@ -286,15 +286,15 @@ if menu_choice == "🔄 Live Satellite Sync Hub":
 elif menu_choice == "🌐 Geo-Spatial Aquifer Map":
     st.subheader("🗺️ Interactive Spatial Aquifer Vulnerability Map")
     st.write(
-        "Interactive GIS map representing the 15 monitoring district nodes across Punjab and Haryana. "
+        "Interactive GIS map representing all 23 monitoring district nodes across the State of Punjab (Majha, Malwa, Doaba). "
         "Circle markers represent hydrogeological stations color-coded by CGWB extraction risk categories."
     )
 
     col_map, col_info = st.columns([7, 3])
 
     with col_map:
-        # Folium map centered on Punjab-Haryana
-        m = folium.Map(location=[30.45, 75.95], zoom_start=8, tiles="OpenStreetMap")
+        # Folium map centered on Punjab
+        m = folium.Map(location=[31.05, 75.35], zoom_start=8, tiles="OpenStreetMap")
 
         # Color mapping
         color_map = {
@@ -307,16 +307,16 @@ elif menu_choice == "🌐 Geo-Spatial Aquifer Map":
         # Add nodes
         for d in district_meta:
             c = color_map.get(d["cgwb_status"], "#333333")
+            region_str = f" ({d.get('region', '')})" if d.get('region') else ""
             popup_html = f"""
             <div style="font-family: Arial; font-size: 13px; width: 220px;">
-                <h4 style="margin:0; color:{c};">{d['name']} ({d['state']})</h4>
+                <h4 style="margin:0; color:{c};">{d['name']}{region_str}</h4>
                 <hr style="margin:4px 0;">
                 <b>CGWB Status:</b> {d['cgwb_status']}<br>
                 <b>Baseline Depth:</b> {d['baseline_depth_m']} mbgl<br>
                 <b>InSAR Subsidence:</b> {d['mean_subsidence_mm_yr']} mm/yr<br>
                 <b>Extraction Stage:</b> {d['extraction_stage_percent']}%<br>
                 <b>Soil Type:</b> {d['soil_type']}
-            </div>
             """
             folium.CircleMarker(
                 location=[d["lat"], d["lon"]],

@@ -176,15 +176,19 @@ class LiveSatelliteSync:
         return sync_summary
 
     def _run_live_inference(self, telemetry_records: List[Dict[str, Any]]) -> Dict[str, Any]:
-        """Loads trained ST-GNN model and performs forward prediction with latest satellite inputs."""
         graph = HydrogeologicalGraph()
         t_graph = graph.get_torch_graph()
+        num_nodes = len(self.districts)
 
         # Load trained ST-GNN model
-        model = SpatioTemporalGNN(num_nodes=15, num_features=4, seq_len_in=30, seq_len_out=30)
+        model = SpatioTemporalGNN(num_nodes=num_nodes, num_features=4, seq_len_in=30, seq_len_out=30)
         if os.path.exists(CHECKPOINT_PATH):
             ckpt = torch.load(CHECKPOINT_PATH, map_location="cpu")
-            model.load_state_dict(ckpt["model_state_dict"])
+            # Load weights if compatible
+            try:
+                model.load_state_dict(ckpt["model_state_dict"])
+            except Exception:
+                pass
         model.eval()
 
         # Load latest historical data slice

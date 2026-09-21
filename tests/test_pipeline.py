@@ -19,7 +19,7 @@ from src.forecaster import GroundwaterForecaster
 
 def test_metadata_loading():
     districts = load_district_metadata()
-    assert len(districts) == 15, "Expected 15 districts"
+    assert len(districts) == 23, f"Expected 23 districts of Punjab, got {len(districts)}"
     for d in districts:
         assert "name" in d
         assert "lat" in d
@@ -37,8 +37,8 @@ def test_haversine_distance():
 def test_graph_builder():
     graph = HydrogeologicalGraph()
     t_graph = graph.get_torch_graph()
-    assert t_graph["num_nodes"] == 15
-    assert t_graph["adj"].shape == (15, 15)
+    assert t_graph["num_nodes"] == 23
+    assert t_graph["adj"].shape == (23, 23)
     assert t_graph["edge_index"].shape[0] == 2
     # Ensure adjacency is symmetric
     adj_np = t_graph["adj"].numpy()
@@ -46,7 +46,7 @@ def test_graph_builder():
 
 
 def test_stgnn_forward_pass():
-    B, T_in, N, F, T_out = 2, 30, 15, 4, 30
+    B, T_in, N, F, T_out = 2, 30, 23, 4, 30
     x = torch.randn(B, T_in, N, F)
     adj = torch.eye(N)
     
@@ -67,7 +67,8 @@ def test_evaluation_metrics():
 def test_forecaster():
     graph = HydrogeologicalGraph()
     t_graph = graph.get_torch_graph()
-    model = SpatioTemporalGNN(num_nodes=15, num_features=4, seq_len_in=30, seq_len_out=30)
+    N = t_graph["num_nodes"]
+    model = SpatioTemporalGNN(num_nodes=N, num_features=4, seq_len_in=30, seq_len_out=30)
     
     forecaster = GroundwaterForecaster(
         model=model,
@@ -76,11 +77,11 @@ def test_forecaster():
         target_std=8.0
     )
     
-    dummy_last_window = np.zeros((30, 15, 4), dtype=np.float32)
+    dummy_last_window = np.zeros((30, N, 4), dtype=np.float32)
     res = forecaster.predict_next_30_days(dummy_last_window)
     
     assert res["forecast_horizon_days"] == 30
-    assert len(res["districts"]) == 15
+    assert len(res["districts"]) == 23
     assert len(res["districts"][0]["trajectory_30d"]) == 30
 
 
