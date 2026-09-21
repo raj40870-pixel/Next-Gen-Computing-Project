@@ -63,7 +63,6 @@ st.markdown("""
 # -------------------------------------------------------------
 # Data Loading Utilities
 # -------------------------------------------------------------
-@st.cache_data
 def load_all_data():
     raw_path = os.path.join("data", "raw", "fused_groundwater_timeseries_2017_2024.csv")
     geo_path = os.path.join("data", "geo", "punjab_haryana_districts.json")
@@ -333,8 +332,9 @@ elif menu_choice == "🌐 Geo-Spatial Aquifer Map":
         # Draw hydrogeological connectivity edges between neighboring districts (threshold <= 140km)
         from src.graph_builder import HydrogeologicalGraph
         hg = HydrogeologicalGraph()
-        for i in range(hg.num_nodes):
-            for j in range(i + 1, hg.num_nodes):
+        num_draw = min(hg.num_nodes, len(district_meta))
+        for i in range(num_draw):
+            for j in range(i + 1, num_draw):
                 w = hg.adj_matrix[i, j]
                 if w > 0.08:
                     p1 = [district_meta[i]["lat"], district_meta[i]["lon"]]
