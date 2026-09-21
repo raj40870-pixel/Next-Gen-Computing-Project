@@ -1,0 +1,29 @@
+{
+  "auto_sync_enabled": true,
+  "sync_interval_hours": 24,
+  "open_meteo": {
+    "enabled": true,
+    "name": "Open-Meteo Global Satellite Precipitation API",
+    "endpoint": "https://api.open-meteo.com/v1/forecast",
+    "requires_key": false,
+    "status": "connected"
+  },
+  "nasa_power": {
+    "enabled": true,
+    "name": "NASA POWER Agroclimatology Satellite API",
+    "endpoint": "https://power.larc.nasa.gov/api/temporal/daily/point",
+    "requires_key": false,
+    "status": "connected"
+  },
+  "copernicus_cdse": {
+    "enabled": true,
+    "name": "ESA Copernicus Data Space Ecosystem (Sentinel-1 InSAR)",
+    "endpoint": "https://dataspace.copernicus.eu/odata/v1",
+    "requires_key": true,
+    "client_id": "",
+    "client_secret": "",
+    "status": "calibrated_stream"
+  },
+  "last_sync_timestamp": "2026-09-21 10:27:14",
+  "records_synced_count": 30
+}
