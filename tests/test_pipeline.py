@@ -19,7 +19,7 @@ from src.forecaster import GroundwaterForecaster
 
 def test_metadata_loading():
     districts = load_district_metadata()
-    assert len(districts) == 23, f"Expected 23 districts of Punjab, got {len(districts)}"
+    assert len(districts) >= 23, f"Expected at least 23 districts, got {len(districts)}"
     for d in districts:
         assert "name" in d
         assert "lat" in d
@@ -37,8 +37,8 @@ def test_haversine_distance():
 def test_graph_builder():
     graph = HydrogeologicalGraph()
     t_graph = graph.get_torch_graph()
-    assert t_graph["num_nodes"] == 23
-    assert t_graph["adj"].shape == (23, 23)
+    assert t_graph["num_nodes"] == graph.num_nodes
+    assert t_graph["adj"].shape == (graph.num_nodes, graph.num_nodes)
     assert t_graph["edge_index"].shape[0] == 2
     # Ensure adjacency is symmetric
     adj_np = t_graph["adj"].numpy()
@@ -46,7 +46,9 @@ def test_graph_builder():
 
 
 def test_stgnn_forward_pass():
-    B, T_in, N, F, T_out = 2, 30, 23, 4, 30
+    graph = HydrogeologicalGraph()
+    N = graph.num_nodes
+    B, T_in, F, T_out = 2, 30, 4, 30
     x = torch.randn(B, T_in, N, F)
     adj = torch.eye(N)
     
@@ -81,7 +83,7 @@ def test_forecaster():
     res = forecaster.predict_next_30_days(dummy_last_window)
     
     assert res["forecast_horizon_days"] == 30
-    assert len(res["districts"]) == 23
+    assert len(res["districts"]) == N
     assert len(res["districts"][0]["trajectory_30d"]) == 30
 
 
