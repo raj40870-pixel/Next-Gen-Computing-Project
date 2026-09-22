@@ -104,7 +104,7 @@ def render_district_selector(key_prefix: str = "main"):
     # Ensure Punjab is the PRIMARY default option
     state_options = [
         "🌾 Punjab (All 23 Districts) [Default]",
-        "🇮🇳 All India (All 50 Districts)"
+        f"🇮🇳 All India (All {len(district_meta)} Districts)"
     ] + [
         f"{s} ({len([d for d in district_meta if d['state'] == s])} Districts)"
         for s in all_states if s != "Punjab"
@@ -369,25 +369,19 @@ elif menu_choice == "🌐 Geo-Spatial Aquifer Map":
     )
 
     # State / Scope Selector with Punjab as Default!
+    map_state_options = [
+        "🌾 Punjab (All 23 Districts) [Default]",
+        f"🇮🇳 All India (All {len(district_meta)} Districts)"
+    ] + [
+        f"{s} ({len([d for d in district_meta if d['state'] == s])} Districts)"
+        for s in sorted(list(set(d["state"] for d in district_meta))) if s != "Punjab"
+    ]
+
     c_map_scope, c_map_engine = st.columns([6, 4])
     with c_map_scope:
         map_state_choice = st.selectbox(
             "🌍 Select Map State / Region:",
-            [
-                "🌾 Punjab (All 23 Districts) [Default]",
-                "🇮🇳 All India (All 50 Districts)",
-                "Haryana (5 Districts)",
-                "Rajasthan (4 Districts)",
-                "Uttar Pradesh (4 Districts)",
-                "Maharashtra (3 Districts)",
-                "Gujarat (2 Districts)",
-                "Madhya Pradesh (2 Districts)",
-                "Karnataka (2 Districts)",
-                "Tamil Nadu (2 Districts)",
-                "Bihar (1 District)",
-                "Telangana (1 District)",
-                "West Bengal (1 District)"
-            ],
+            map_state_options,
             index=0,
             key="map_state_choice"
         )
@@ -410,7 +404,7 @@ elif menu_choice == "🌐 Geo-Spatial Aquifer Map":
         active_nodes = district_meta
         map_center = [22.8, 79.2]
         map_zoom = 5
-        scope_title = "All India (All 50 Districts)"
+        scope_title = f"All India (All {len(district_meta)} Districts)"
     else:
         state_name = map_state_choice.split(" (")[0]
         active_nodes = [d for d in district_meta if d["state"] == state_name]
@@ -753,14 +747,20 @@ elif menu_choice == "🧪 What-If Climate Scenario Simulator":
         "and policy-driven tubewell pumping restrictions across all districts."
     )
 
+    sim_scope_options = [
+        "🌾 Punjab (All 23 Districts) [Default]",
+        f"🇮🇳 All India (All {len(district_meta)} Districts)"
+    ] + [
+        f"{s} ({len([d for d in district_meta if d['state'] == s])} Districts)"
+        for s in sorted(list(set(d["state"] for d in district_meta))) if s != "Punjab"
+    ]
+
     c_sim_scope, c_sim1, c_sim2 = st.columns([1, 1, 1])
     with c_sim_scope:
         sim_scope = st.selectbox(
             "Select Simulation Scope:",
-            ["All India (All 50 Districts)", "Punjab (All 23 Districts)"] + [
-                s for s in sorted(list(set(d["state"] for d in district_meta))) if s != "Punjab"
-            ],
-            index=1
+            sim_scope_options,
+            index=0
         )
     with c_sim1:
         rain_slider = st.slider(
