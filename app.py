@@ -13,7 +13,7 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 import folium
-from streamlit_folium import st_folium
+import streamlit.components.v1 as components
 
 # -------------------------------------------------------------
 # Page Configuration
@@ -101,8 +101,11 @@ def render_district_selector(key_prefix: str = "main"):
     Returns: (selected_district_dict, filtered_district_list, selected_state_choice)
     """
     all_states = sorted(list(set(d["state"] for d in district_meta)))
-    # Ensure Punjab and All India are prominent options
-    state_options = ["All India (All 50 Districts)", "Punjab (All 23 Districts)"] + [
+    # Ensure Punjab is the PRIMARY default option
+    state_options = [
+        "🌾 Punjab (All 23 Districts) [Default]",
+        "🇮🇳 All India (All 50 Districts)"
+    ] + [
         f"{s} ({len([d for d in district_meta if d['state'] == s])} Districts)"
         for s in all_states if s != "Punjab"
     ]
@@ -117,10 +120,10 @@ def render_district_selector(key_prefix: str = "main"):
         )
 
     # Filter by selected state
-    if "All India" in sel_state_choice:
-        scoped_districts = district_meta
-    elif "Punjab" in sel_state_choice:
+    if "Punjab" in sel_state_choice:
         scoped_districts = [d for d in district_meta if d["state"] == "Punjab"]
+    elif "All India" in sel_state_choice:
+        scoped_districts = district_meta
     else:
         state_name = sel_state_choice.split(" (")[0]
         scoped_districts = [d for d in district_meta if d["state"] == state_name]
@@ -129,7 +132,7 @@ def render_district_selector(key_prefix: str = "main"):
         search_kw = st.text_input(
             "🔍 Quick Search by District Name or Keyword:",
             value="",
-            placeholder="Type district name (e.g. Amritsar, Sangrur, Ludhiana, Jaipur, Pune, Bengaluru...)",
+            placeholder="Type district name (e.g. Amritsar, Sangrur, Ludhiana, Bathinda, Patiala...)",
             key=f"{key_prefix}_search_input"
         ).strip().lower()
 
@@ -176,13 +179,14 @@ st.sidebar.caption("Pan-India Groundwater AI | 23 Punjab + 27 Multi-State Nodes"
 menu_choice = st.sidebar.radio(
     "Navigation Menu",
     [
-        "🔄 Live Satellite Sync Hub",
         "🌐 Geo-Spatial Aquifer Map",
         "📈 30-Day Forecast Explorer",
+        "🔄 Live Satellite Sync Hub",
         "🧪 What-If Climate Scenario Simulator",
         "📊 Model Benchmarking Lab",
         "🛰️ InSAR & Hydrogeology Data Hub"
-    ]
+    ],
+    index=0
 )
 
 # Quick Sidebar Sync Status
@@ -364,49 +368,57 @@ elif menu_choice == "🌐 Geo-Spatial Aquifer Map":
         "Markers are color-coded by CGWB extraction risk. Gray lines represent spatial hydrogeological graph connectivity edges."
     )
 
-    # View Controls: Quick zoom & Scope filter
+    # State / Scope Selector with Punjab as Default!
     c_map_scope, c_map_engine = st.columns([6, 4])
     with c_map_scope:
-        map_view_preset = st.radio(
-            "📍 Quick Geographic Focus / Zoom Preset:",
+        map_state_choice = st.selectbox(
+            "🌍 Select Map State / Region:",
             [
-                "🌾 Focus: Punjab State (All 23 Districts)",
-                "🇮🇳 View: Whole India (All 50 Districts)",
-                "🔍 Filter by Individual State"
+                "🌾 Punjab (All 23 Districts) [Default]",
+                "🇮🇳 All India (All 50 Districts)",
+                "Haryana (5 Districts)",
+                "Rajasthan (4 Districts)",
+                "Uttar Pradesh (4 Districts)",
+                "Maharashtra (3 Districts)",
+                "Gujarat (2 Districts)",
+                "Madhya Pradesh (2 Districts)",
+                "Karnataka (2 Districts)",
+                "Tamil Nadu (2 Districts)",
+                "Bihar (1 District)",
+                "Telangana (1 District)",
+                "West Bengal (1 District)"
             ],
             index=0,
-            horizontal=True
+            key="map_state_choice"
         )
 
     with c_map_engine:
         map_engine = st.radio(
             "🖥️ Map Display Engine:",
-            ["🗺️ Folium Leaflet GIS", "⚡ Plotly Fast Map (Zero Crash 60 FPS Zoom)"],
+            ["🗺️ Folium Leaflet GIS (Native Interactive)", "⚡ Plotly Fast Map (Hardware-Accelerated WebGL)"],
             index=0,
             horizontal=True
         )
 
-    # Determine center & zoom
-    if "Punjab" in map_view_preset:
+    # Filter active nodes strictly according to selected state!
+    if "Punjab" in map_state_choice:
+        active_nodes = [d for d in district_meta if d["state"] == "Punjab"]
         map_center = [31.05, 75.35]
         map_zoom = 8
-        active_nodes_for_charts = [d for d in district_meta if d["state"] == "Punjab"]
-        scope_title = "Punjab State (All 23 Districts)"
-    elif "Whole India" in map_view_preset:
+        scope_title = "State of Punjab (All 23 Districts)"
+    elif "All India" in map_state_choice:
+        active_nodes = district_meta
         map_center = [22.8, 79.2]
         map_zoom = 5
-        active_nodes_for_charts = district_meta
         scope_title = "All India (All 50 Districts)"
     else:
-        # Individual state
-        other_states = sorted(list(set(d["state"] for d in district_meta)))
-        sel_single_state = st.selectbox("Select State to Focus:", other_states)
-        active_nodes_for_charts = [d for d in district_meta if d["state"] == sel_single_state]
-        lats = [d["lat"] for d in active_nodes_for_charts]
-        lons = [d["lon"] for d in active_nodes_for_charts]
+        state_name = map_state_choice.split(" (")[0]
+        active_nodes = [d for d in district_meta if d["state"] == state_name]
+        lats = [d["lat"] for d in active_nodes]
+        lons = [d["lon"] for d in active_nodes]
         map_center = [float(np.mean(lats)), float(np.mean(lons))]
-        map_zoom = 7 if sel_single_state != "Punjab" else 8
-        scope_title = f"{sel_single_state} ({len(active_nodes_for_charts)} Districts)"
+        map_zoom = 7
+        scope_title = f"{state_name} ({len(active_nodes)} Districts)"
 
     col_map, col_info = st.columns([7, 3])
 
@@ -421,21 +433,13 @@ elif menu_choice == "🌐 Geo-Spatial Aquifer Map":
         if "Folium" in map_engine:
             m = folium.Map(location=map_center, zoom_start=map_zoom, tiles="OpenStreetMap")
 
-            # Create FeatureGroups for easy layer toggling and fast zooming
-            fg_punjab = folium.FeatureGroup(name="🌾 Punjab Aquifers (All 23 Districts)", show=True)
-            fg_india = folium.FeatureGroup(name="🇮🇳 Other Indian States (27 Districts)", show=True)
-            fg_edges = folium.FeatureGroup(name="🔗 Hydrogeological Flow Edges", show=True)
-
-            # Add ALL 50 districts so zooming out or panning never leaves empty blanks
-            for d in district_meta:
+            # Add ONLY active districts (so Punjab only shows Punjab!)
+            for d in active_nodes:
                 c = color_map.get(d["cgwb_status"], "#333333")
-                is_punjab = (d["state"] == "Punjab")
                 region_str = f" [{d.get('region', '')}]" if d.get('region') else ""
-                state_badge = "🌾 PUNJAB" if is_punjab else f"🇮🇳 {d['state'].upper()}"
-
                 popup_html = f"""
                 <div style="font-family: Arial; font-size: 13px; width: 230px; line-height: 1.4;">
-                    <div style="font-size: 11px; font-weight: bold; color: {'#1d4ed8' if is_punjab else '#475569'}; margin-bottom: 2px;">{state_badge}</div>
+                    <div style="font-size: 11px; font-weight: bold; color: #1d4ed8; margin-bottom: 2px;">{d['state'].upper()}</div>
                     <h4 style="margin: 0; color: {c}; font-size: 15px;">{d['name']}{region_str}</h4>
                     <hr style="margin: 4px 0;">
                     <b>CGWB Status:</b> <span style="color:{c}; font-weight:bold;">{d['cgwb_status']}</span><br>
@@ -446,62 +450,43 @@ elif menu_choice == "🌐 Geo-Spatial Aquifer Map":
                     <b>Soil Type:</b> {d['soil_type']}
                 </div>
                 """
-                marker = folium.CircleMarker(
+                folium.CircleMarker(
                     location=[d["lat"], d["lon"]],
-                    radius=10 if is_punjab else 8,
-                    color="#b45309" if is_punjab else "#334155",
+                    radius=10,
+                    color=c,
                     fill=True,
                     fill_color=c,
-                    fill_opacity=0.9 if is_punjab else 0.75,
-                    weight=2.5 if is_punjab else 1.5,
+                    fill_opacity=0.85,
+                    weight=2.5,
                     popup=folium.Popup(popup_html, max_width=280),
-                    tooltip=f"{'🌾 ' if is_punjab else ''}{d['name']} ({d['state']}) — {d['cgwb_status']}"
-                )
-                if is_punjab:
-                    fg_punjab.add_child(marker)
-                else:
-                    fg_india.add_child(marker)
+                    tooltip=f"{d['name']} ({d['state']}) — {d['cgwb_status']}"
+                ).add_to(m)
 
-            # Add flow edges
+            # Draw flow edges ONLY between active districts in this scope
             from src.graph_builder import HydrogeologicalGraph
             hg = HydrogeologicalGraph()
+            active_ids = set(d["id"] for d in active_nodes)
             for i in range(len(district_meta)):
                 for j in range(i + 1, len(district_meta)):
-                    w = hg.adj_matrix[i, j]
-                    if w > 0.08:
-                        p1 = [district_meta[i]["lat"], district_meta[i]["lon"]]
-                        p2 = [district_meta[j]["lat"], district_meta[j]["lon"]]
-                        edge = folium.PolyLine(
-                            [p1, p2],
-                            color="#64748b",
-                            weight=float(max(1.0, w * 3.5)),
-                            opacity=0.40,
-                            tooltip=f"Flow Edge: {district_meta[i]['name']} ↔ {district_meta[j]['name']} (wt: {w:.2f})"
-                        )
-                        fg_edges.add_child(edge)
+                    if district_meta[i]["id"] in active_ids and district_meta[j]["id"] in active_ids:
+                        w = hg.adj_matrix[i, j]
+                        if w > 0.08:
+                            p1 = [district_meta[i]["lat"], district_meta[i]["lon"]]
+                            p2 = [district_meta[j]["lat"], district_meta[j]["lon"]]
+                            folium.PolyLine(
+                                [p1, p2],
+                                color="#64748b",
+                                weight=float(max(1.0, w * 3.5)),
+                                opacity=0.45,
+                                tooltip=f"Aquifer Flow Edge: {district_meta[i]['name']} ↔ {district_meta[j]['name']} (wt: {w:.2f})"
+                            ).add_to(m)
 
-            m.add_child(fg_edges)
-            m.add_child(fg_punjab)
-            m.add_child(fg_india)
-            folium.LayerControl(collapsed=False).add_to(m)
+            # Safe iframe rendering (Zero React crash, no white screen, perfectly smooth zoom!)
+            components.html(m._repr_html_(), height=540, scrolling=False)
 
-            try:
-                st_folium(
-                    m,
-                    width=820,
-                    height=540,
-                    returned_objects=[],
-                    key=f"folium_map_{map_center[0]}_{map_center[1]}_{map_zoom}"
-                )
-            except Exception as e:
-                st.error("Folium map container encountered a browser reset. Showing accelerated Plotly Map below.")
-                st.write(e)
         else:
-            # High-speed Plotly Mapbox map (Zero-crash WebGL)
-            df_plot_map = pd.DataFrame(district_meta)
-            df_plot_map["display_name"] = df_plot_map.apply(
-                lambda r: f"{'🌾 ' if r['state'] == 'Punjab' else ''}{r['name']} ({r['state']})", axis=1
-            )
+            # High-speed Plotly Map
+            df_plot_map = pd.DataFrame(active_nodes)
             df_plot_map["marker_size"] = df_plot_map["baseline_depth_m"].apply(lambda x: max(10, min(26, x / 2.2)))
 
             fig_p_map = px.scatter_map(
@@ -511,7 +496,7 @@ elif menu_choice == "🌐 Geo-Spatial Aquifer Map":
                 color="cgwb_status",
                 color_discrete_map=color_map,
                 size="marker_size",
-                hover_name="display_name",
+                hover_name="name",
                 hover_data={
                     "state": True,
                     "baseline_depth_m": True,
@@ -524,18 +509,18 @@ elif menu_choice == "🌐 Geo-Spatial Aquifer Map":
                 },
                 zoom=map_zoom - 1,
                 center=dict(lat=map_center[0], lon=map_center[1]),
-                title="Hardware-Accelerated Aquifer Map (Showing All 50 Districts)"
+                title=f"Aquifer Vulnerability Map: {scope_title}"
             )
             fig_p_map.update_layout(
                 height=540,
                 margin=dict(l=0, r=0, t=30, b=0),
                 map_style="open-street-map"
             )
-            st.plotly_chart(fig_p_map, use_container_width=True)
+            st.plotly_chart(fig_p_map, width="stretch")
 
     with col_info:
         st.markdown(f"### Vulnerability ({scope_title})")
-        status_counts = pd.Series([d["cgwb_status"] for d in active_nodes_for_charts]).value_counts()
+        status_counts = pd.Series([d["cgwb_status"] for d in active_nodes]).value_counts()
         fig_pie = px.pie(
             names=status_counts.index,
             values=status_counts.values,
@@ -544,12 +529,10 @@ elif menu_choice == "🌐 Geo-Spatial Aquifer Map":
             hole=0.45
         )
         fig_pie.update_layout(margin=dict(t=10, b=10, l=10, r=10), height=230)
-        st.plotly_chart(fig_pie, use_container_width=True)
+        st.plotly_chart(fig_pie, width="stretch")
 
-        st.markdown("### 🗺️ Map Station Key")
+        st.markdown("### 🗺️ Risk Legend")
         st.markdown(
-            "- 🌾 **Gold Border Nodes**: Punjab (All 23 Districts)\n"
-            "- 🇮🇳 **Dark Border Nodes**: Other Indian States (27 Districts)\n"
             "- 🔴 **Over-Exploited**: Extraction > 100%, severe subsidence\n"
             "- 🟠 **Critical**: Extraction 90–100%, rapid drawdown\n"
             "- 🟡 **Semi-Critical**: Extraction 70–90%, moderate warning\n"
@@ -565,7 +548,7 @@ elif menu_choice == "🌐 Geo-Spatial Aquifer Map":
 
     with c_g1:
         # Top Depleted Districts Bar Chart
-        df_active = pd.DataFrame(active_nodes_for_charts).sort_values("baseline_depth_m", ascending=False)
+        df_active = pd.DataFrame(active_nodes).sort_values("baseline_depth_m", ascending=False)
         top_d = df_active.head(15)
         fig_rank = px.bar(
             top_d,
@@ -577,7 +560,7 @@ elif menu_choice == "🌐 Geo-Spatial Aquifer Map":
             title=f"Top Depleted Districts in {scope_title} (Deeper = More Critical)"
         )
         fig_rank.update_layout(template="plotly_white", height=380, xaxis_tickangle=-45)
-        st.plotly_chart(fig_rank, use_container_width=True)
+        st.plotly_chart(fig_rank, width="stretch")
 
     with c_g2:
         # Subsidence vs Extraction Stage Scatter
@@ -597,7 +580,7 @@ elif menu_choice == "🌐 Geo-Spatial Aquifer Map":
             title="InSAR Ground Subsidence Rate vs Groundwater Extraction Stage"
         )
         fig_scatter.update_layout(template="plotly_white", height=380)
-        st.plotly_chart(fig_scatter, use_container_width=True)
+        st.plotly_chart(fig_scatter, width="stretch")
 
 
 # -------------------------------------------------------------
