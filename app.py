@@ -215,9 +215,11 @@ if st.sidebar.button("⚡ Quick Satellite Sync"):
         st.rerun()
 
 st.sidebar.divider()
-st.sidebar.markdown("**📍 District Coverage Summary**")
+st.sidebar.markdown("**📍 District Coverage & Data**")
 punjab_count = len([d for d in district_meta if d["state"] == "Punjab"])
 other_count = len(district_meta) - punjab_count
+max_date_str = df_timeseries["date"].max().strftime("%d %b %Y")
+st.sidebar.markdown(f"- **Data Range**: `2017 to {max_date_str} (Latest 2026)`")
 st.sidebar.markdown(f"- **Punjab Districts**: `{punjab_count}/23 (100%)`")
 st.sidebar.markdown(f"- **Pan-India Total**: `{len(district_meta)} Districts`")
 st.sidebar.markdown(f"- **Host**: `http://localhost:8501`")
@@ -907,7 +909,7 @@ elif menu_choice == "📊 Model Benchmarking Lab":
 elif menu_choice == "🛰️ InSAR & Hydrogeology Data Hub":
     st.subheader("🛰️ Multi-Source Satellite & Hydrogeological Data Hub")
     st.write(
-        "Explores the fused multi-modal dataset (2017–2024) comprising Sentinel-1 InSAR surface deformation, "
+        "Explores the fused multi-modal dataset (2017–2026 Latest) comprising Sentinel-1 InSAR surface deformation, "
         "IMD/CHIRPS gridded precipitation, and CGWB observation well groundwater depths."
     )
 

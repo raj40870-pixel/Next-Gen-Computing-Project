@@ -23,7 +23,7 @@ def load_district_metadata(filepath: str = DEFAULT_GEO_PATH) -> List[Dict[str, A
 
 def generate_calibrated_timeseries(
     start_date: str = "2017-01-01",
-    end_date: str = "2024-12-31",
+    end_date: str = "2026-09-22",
     freq: str = "D",
     output_dir: str = RAW_DATA_DIR,
     seed: int = 42
