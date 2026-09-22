@@ -789,7 +789,8 @@ elif menu_choice == "🧪 What-If Climate Scenario Simulator":
     elif "Punjab" in sim_scope:
         sim_pool = [d for d in district_meta if d["state"] == "Punjab"]
     else:
-        sim_pool = [d for d in district_meta if d["state"] == sim_scope]
+        state_name = sim_scope.split(" (")[0].strip()
+        sim_pool = [d for d in district_meta if d["state"] == state_name]
 
     rain_mod = 1.0 + (rain_slider / 100.0)
     pump_mod = 1.0 + (pumping_slider / 100.0)
@@ -807,26 +808,35 @@ elif menu_choice == "🧪 What-If Climate Scenario Simulator":
             "Stress Category": "Severe Stress" if simulated_net_change > 0.15 else ("Moderate Stress" if simulated_net_change > 0.05 else "Stable / Recharging")
         })
 
-    df_sim = pd.DataFrame(sim_records)
+    if not sim_records:
+        df_sim = pd.DataFrame(columns=[
+            "District", "State", "Baseline Depth (mbgl)",
+            "Simulated 30-Day Change (m)", "Projected Depth (mbgl)", "Stress Category"
+        ])
+    else:
+        df_sim = pd.DataFrame(sim_records)
 
     st.markdown(f"### 📊 Simulation Response: {sim_scope} ({len(sim_pool)} Districts)")
-    fig_bar = px.bar(
-        df_sim,
-        x="District",
-        y="Simulated 30-Day Change (m)",
-        color="Stress Category",
-        color_discrete_map={
-            "Severe Stress": "#d90429",
-            "Moderate Stress": "#f77f00",
-            "Stable / Recharging": "#2a9d8f"
-        },
-        title=f"30-Day Depletion Response Under Scenario (Rainfall: {rain_slider:+}%, Pumping: {pumping_slider:+}%)"
-    )
-    fig_bar.update_layout(template="plotly_white", height=420, xaxis_tickangle=-45)
-    st.plotly_chart(fig_bar, use_container_width=True)
+    if not df_sim.empty:
+        fig_bar = px.bar(
+            df_sim,
+            x="District",
+            y="Simulated 30-Day Change (m)",
+            color="Stress Category",
+            color_discrete_map={
+                "Severe Stress": "#d90429",
+                "Moderate Stress": "#f77f00",
+                "Stable / Recharging": "#2a9d8f"
+            },
+            title=f"30-Day Depletion Response Under Scenario (Rainfall: {rain_slider:+}%, Pumping: {pumping_slider:+}%)"
+        )
+        fig_bar.update_layout(template="plotly_white", height=420, xaxis_tickangle=-45)
+        st.plotly_chart(fig_bar, use_container_width=True)
 
-    # Data Table
-    st.dataframe(df_sim, use_container_width=True)
+        # Data Table
+        st.dataframe(df_sim, use_container_width=True)
+    else:
+        st.warning(f"No districts found for selected scope: {sim_scope}")
 
 
 # -------------------------------------------------------------
