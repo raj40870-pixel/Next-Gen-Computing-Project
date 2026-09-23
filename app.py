@@ -5,8 +5,14 @@ Full Pan-India Coverage with Complete 23 Districts of Punjab + Search & State Se
 """
 
 import os
+import sys
 import json
 import time
+
+# Prevent AppLocker DLL block on pyarrow._compute in Windows environment
+sys.modules['pyarrow'] = None
+sys.modules['pyarrow.compute'] = None
+
 import numpy as np
 import pandas as pd
 import streamlit as st

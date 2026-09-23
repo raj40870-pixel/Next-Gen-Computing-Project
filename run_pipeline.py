@@ -6,6 +6,11 @@ baseline benchmarking (LSTM, ARIMA, Random Forest), and 30-day forecasting.
 
 import os
 import sys
+
+# Prevent AppLocker DLL block on pyarrow._compute in Windows environment
+sys.modules['pyarrow'] = None
+sys.modules['pyarrow.compute'] = None
+
 import json
 import numpy as np
 import pandas as pd

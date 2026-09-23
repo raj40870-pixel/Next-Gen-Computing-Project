@@ -14,6 +14,10 @@ from typing import Dict, Any, List, Optional
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
+# Prevent AppLocker DLL block on pyarrow._compute in Windows environment
+sys.modules['pyarrow'] = None
+sys.modules['pyarrow.compute'] = None
+
 import requests
 import numpy as np
 import pandas as pd
