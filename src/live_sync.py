@@ -109,15 +109,14 @@ class LiveSatelliteSync:
 
     def sync_all_districts(self) -> Dict[str, Any]:
         """
-        Fetches live satellite telemetry for all 15 monitoring district stations,
+        Fetches live satellite telemetry for all monitoring district stations in parallel,
         updates the database, and executes live ST-GNN prediction.
         """
-        print("[*] Initiating real-time satellite sync across 15 monitoring stations...")
+        from concurrent.futures import ThreadPoolExecutor
+        print(f"[*] Initiating real-time satellite sync across {len(self.districts)} stations in parallel...")
         sync_timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        telemetry_records = []
-        total_precip_collected = 0.0
 
-        for d in self.districts:
+        def _fetch_node_telemetry(d):
             d_id = d["id"]
             d_name = d["name"]
             lat = d["lat"]
@@ -127,15 +126,14 @@ class LiveSatelliteSync:
             weather_data = self.fetch_live_satellite_weather(lat, lon, past_days=5)
             recent_rain = weather_data["rainfall_mm"][-1] if weather_data["rainfall_mm"] else 0.0
             recent_et = weather_data["et_mm"][-1] if weather_data["et_mm"] else 3.5
-            total_precip_collected += recent_rain
 
             # Calculate Sentinel-1 InSAR subsidence rate update
-            daily_subsidence_delta = (d["mean_subsidence_mm_yr"] / 365.25)
+            daily_subsidence_delta = (d.get("mean_subsidence_mm_yr", -15.0) / 365.25)
             # Heavy rain causes minor elastic rebound
             elastic_rebound = 0.05 * recent_rain
             adjusted_subsidence_delta = daily_subsidence_delta + elastic_rebound
 
-            telemetry_records.append({
+            return {
                 "district_id": d_id,
                 "district_name": d_name,
                 "state": d["state"],
@@ -147,7 +145,12 @@ class LiveSatelliteSync:
                 "satellite_status": "ONLINE (Connected)",
                 "data_source": weather_data["source"],
                 "last_observation_date": weather_data["dates"][-1] if weather_data["dates"] else sync_timestamp
-            })
+            }
+
+        with ThreadPoolExecutor(max_workers=20) as executor:
+            telemetry_records = list(executor.map(_fetch_node_telemetry, self.districts))
+
+        total_precip_collected = sum(r["live_rainfall_mm"] for r in telemetry_records)
 
         # Run Live ST-GNN Model Inference on latest data
         print("[*] Running live ST-GNN forward pass on updated satellite data...")
@@ -191,9 +194,11 @@ class LiveSatelliteSync:
                 pass
         model.eval()
 
-        # Load latest historical data slice
+        # Load latest historical data slice (fast recent tail)
         if os.path.exists(RAW_DATA_PATH):
             df_hist = pd.read_csv(RAW_DATA_PATH, parse_dates=["date"])
+            max_dt = df_hist["date"].max()
+            df_hist = df_hist[df_hist["date"] >= (max_dt - pd.Timedelta(days=45))]
         else:
             from src.data_pipeline import generate_calibrated_timeseries
             df_hist = generate_calibrated_timeseries()
