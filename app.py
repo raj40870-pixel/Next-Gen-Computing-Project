@@ -199,6 +199,39 @@ def load_all_data():
 df_timeseries, district_meta, benchmark_res, latest_forecast = load_all_data()
 
 # -------------------------------------------------------------
+# Autonomous On-Load Satellite Sync Hook
+# Automatically polls APIs when website loads if data is > 12 hours old
+# -------------------------------------------------------------
+if "auto_sync_checked" not in st.session_state:
+    st.session_state["auto_sync_checked"] = True
+    try:
+        from src.live_sync import LiveSatelliteSync
+        from datetime import datetime
+        syncer = LiveSatelliteSync()
+        last_t_str = syncer.config.get("last_sync_timestamp")
+        needs_auto_sync = False
+        if not last_t_str:
+            needs_auto_sync = True
+        else:
+            try:
+                last_dt = datetime.strptime(last_t_str, "%Y-%m-%d %H:%M:%S")
+                # Auto-sync on page load if older than 12 hours
+                if (datetime.now() - last_dt).total_seconds() >= 12 * 3600:
+                    needs_auto_sync = True
+            except Exception:
+                needs_auto_sync = True
+
+        if needs_auto_sync:
+            with st.spinner("🛰️ Auto-fetching latest satellite telemetry & updating regional forecasts..."):
+                sync_res = syncer.sync_all_districts()
+                st.cache_data.clear()
+                st.session_state["last_synced_res"] = sync_res
+                st.toast("🟢 Live Satellite Telemetry Auto-Updated on Load!", icon="🛰️")
+                st.rerun()
+    except Exception as e:
+        print(f"[!] Auto-sync on page load skipped: {e}")
+
+# -------------------------------------------------------------
 # Reusable Search & State Filter Helper
 # -------------------------------------------------------------
 def render_district_selector(key_prefix: str = "main"):
@@ -403,17 +436,17 @@ st.markdown("""
 <div class="action-banner">
     <div class="action-title">
         <span>⚡ Real-Time Satellite Telemetry &amp; Ground-Truth Verification</span>
-        <span style="font-size:0.75rem; background:#10b981; color:white; padding:2px 8px; border-radius:12px; font-weight:600;">STREAM ONLINE 🟢</span>
+        <span style="font-size:0.75rem; background:#10b981; color:white; padding:2px 8px; border-radius:12px; font-weight:600;">AUTO-FETCH ON LOAD: ACTIVE 🟢</span>
     </div>
     <div style="font-size:0.86rem; color:#334155; line-height:1.4;">
-        Connect live to Open-Meteo &amp; Sentinel-1 InSAR data streams to ingest current telemetry or run an interactive Ground-Truth Accuracy Audit validated against Central Ground Water Board (CGWB) observation wells.
+        <strong>Autonomous Data Pipeline:</strong> The system automatically queries Open-Meteo &amp; Sentinel-1 InSAR satellite APIs whenever the page loads (if data is &gt;12h old), and runs a continuous 24-hour background daemon. You can also click below to force an immediate live re-sync.
     </div>
 </div>
 """, unsafe_allow_html=True)
 
 col_act1, col_act2 = st.columns([1, 1])
 with col_act1:
-    if st.button("⚡ Fetch Real-Time Satellite Telemetry (Live API Sync)", type="primary", use_container_width=True, key="main_top_sync_btn"):
+    if st.button("⚡ Force Live Satellite API Re-Sync (All 205 Stations)", type="primary", use_container_width=True, key="main_top_sync_btn"):
         from src.live_sync import LiveSatelliteSync
         with st.spinner("Connecting to Open-Meteo & Copernicus satellite APIs across India in parallel..."):
             syncer = LiveSatelliteSync()
