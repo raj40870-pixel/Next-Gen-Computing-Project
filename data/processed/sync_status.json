@@ -1,8 +1,8 @@
 {
-  "last_sync_timestamp": "2026-10-21 14:02:42",
+  "last_sync_timestamp": "2026-10-21 14:22:39",
   "sync_status": "SUCCESS",
   "active_nodes_synced": 205,
-  "total_rainfall_monitored_mm": 367.18,
+  "total_rainfall_monitored_mm": 370.66,
   "telemetry": [
     {
       "district_id": 0,
@@ -738,11 +738,11 @@
       "state": "Rajasthan",
       "lat": 29.581,
       "lon": 74.3294,
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.71,
-      "live_insar_delta_mm": -0.028,
+      "live_rainfall_mm": 0.19,
+      "live_et_mm": 3.37,
+      "live_insar_delta_mm": -0.018,
       "satellite_status": "ONLINE (Connected)",
-      "data_source": "Open-Meteo Satellite API",
+      "data_source": "Offline Calibrated Satellite Stream",
       "last_observation_date": "2026-10-21"
     },
     {
@@ -894,11 +894,11 @@
       "state": "Rajasthan",
       "lat": 26.1661,
       "lon": 75.7891,
-      "live_rainfall_mm": 0.64,
-      "live_et_mm": 3.97,
-      "live_insar_delta_mm": -0.009,
+      "live_rainfall_mm": 0.0,
+      "live_et_mm": 3.95,
+      "live_insar_delta_mm": -0.041,
       "satellite_status": "ONLINE (Connected)",
-      "data_source": "Offline Calibrated Satellite Stream",
+      "data_source": "Open-Meteo Satellite API",
       "last_observation_date": "2026-10-21"
     },
     {
@@ -1011,11 +1011,11 @@
       "state": "Uttar Pradesh",
       "lat": 26.4499,
       "lon": 80.3319,
-      "live_rainfall_mm": 1.14,
-      "live_et_mm": 3.98,
-      "live_insar_delta_mm": 0.013,
+      "live_rainfall_mm": 0.0,
+      "live_et_mm": 3.93,
+      "live_insar_delta_mm": -0.043,
       "satellite_status": "ONLINE (Connected)",
-      "data_source": "Offline Calibrated Satellite Stream",
+      "data_source": "Open-Meteo Satellite API",
       "last_observation_date": "2026-10-21"
     },
     {
@@ -1674,11 +1674,11 @@
       "state": "Gujarat",
       "lat": 21.7051,
       "lon": 72.9959,
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.8,
-      "live_insar_delta_mm": -0.018,
+      "live_rainfall_mm": 5.07,
+      "live_et_mm": 3.41,
+      "live_insar_delta_mm": 0.236,
       "satellite_status": "ONLINE (Connected)",
-      "data_source": "Open-Meteo Satellite API",
+      "data_source": "Offline Calibrated Satellite Stream",
       "last_observation_date": "2026-10-21"
     },
     {
