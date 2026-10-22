@@ -8,7 +8,8 @@ $word.DisplayAlerts = [Microsoft.Office.Interop.Word.WdAlertLevel]::wdAlertsNone
 
 try {
     Write-Host "Opening document: $docxPath"
-    $doc = $word.Documents.Open($docxPath)
+    # Open(FileName, ConfirmConversions, ReadOnly, AddToRecentFiles)
+    $doc = $word.Documents.Open($docxPath, $false, $true, $false)
     Write-Host "Exporting to PDF: $pdfPath"
     # wdFormatPDF = 17
     $doc.SaveAs([ref]$pdfPath, [ref]17)
