@@ -56,6 +56,17 @@ def set_table_borders(table, color="B0B0B0", sz="4", val="single"):
     )
     tblPr.append(borders)
 
+def set_table_width(table, width_in):
+    tblPr = table._tbl.tblPr
+    for el in tblPr.findall(qn('w:tblW')):
+        tblPr.remove(el)
+    tblW = parse_xml(f'<w:tblW {nsdecls("w")} w:w="{int(width_in * 1440)}" w:type="dxa"/>')
+    tblPr.append(tblW)
+    for el in tblPr.findall(qn('w:tblLayout')):
+        tblPr.remove(el)
+    layout = parse_xml(f'<w:tblLayout {nsdecls("w")} w:type="fixed"/>')
+    tblPr.append(layout)
+
 def build_docx(font_pt=9.5, line_sp=1.12, space_after=4.5):
     doc = Document()
 
@@ -258,6 +269,7 @@ def build_docx(font_pt=9.5, line_sp=1.12, space_after=4.5):
             tbl = doc.add_table(rows=2, cols=1)
             tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
             tbl.autofit = False
+            set_table_width(tbl, width_in)
             
             c0 = tbl.cell(0, 0)
             c1 = tbl.cell(1, 0)
@@ -293,14 +305,23 @@ def build_docx(font_pt=9.5, line_sp=1.12, space_after=4.5):
             p_buf.paragraph_format.space_after = Pt(5)
             p_buf.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
 
-    def add_algo_box(algo_num, algo_title, steps):
+    def add_algo_box(algo_num, algo_title, steps, width_in=3.15):
         tbl = doc.add_table(rows=1, cols=1)
         tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
         tbl.autofit = False
-        tbl.columns[0].width = Inches(3.2)
+        set_table_width(tbl, width_in)
+        tbl.columns[0].width = Inches(width_in)
+        
         c = tbl.cell(0, 0)
+        c.width = Inches(width_in)
+        tcPr = c._tc.get_or_add_tcPr()
+        for el in tcPr.findall(qn('w:tcW')):
+            tcPr.remove(el)
+        tcW = parse_xml(f'<w:tcW {nsdecls("w")} w:w="{int(width_in * 1440)}" w:type="dxa"/>')
+        tcPr.append(tcW)
+        
         set_cell_background(c, "FAFBFC")
-        set_cell_margins(c, top=45, bottom=45, left=50, right=50)
+        set_cell_margins(c, top=40, bottom=40, left=45, right=45)
         set_table_borders(tbl, color="1B365D", sz="6", val="single")
 
         p_h = c.paragraphs[0]
@@ -327,6 +348,7 @@ def build_docx(font_pt=9.5, line_sp=1.12, space_after=4.5):
         p_buf = doc.add_paragraph()
         p_buf.paragraph_format.space_before = Pt(0)
         p_buf.paragraph_format.space_after = Pt(5)
+        p_buf.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
 
     # --- BODY TEXT ---
     add_sec_head("I", "Introduction & Crisis Overview")
@@ -359,6 +381,7 @@ def build_docx(font_pt=9.5, line_sp=1.12, space_after=4.5):
     tbl_sota.alignment = WD_TABLE_ALIGNMENT.CENTER
     tbl_sota.autofit = False
     set_table_borders(tbl_sota)
+    set_table_width(tbl_sota, 3.2)
     col_w_sota = [Inches(1.0), Inches(0.7), Inches(0.8), Inches(0.7)]
     for row in tbl_sota.rows:
         for idx, w in enumerate(col_w_sota):
@@ -501,6 +524,7 @@ def build_docx(font_pt=9.5, line_sp=1.12, space_after=4.5):
     tbl_states.alignment = WD_TABLE_ALIGNMENT.CENTER
     tbl_states.autofit = False
     set_table_borders(tbl_states)
+    set_table_width(tbl_states, 3.2)
     col_w_st = [Inches(1.0), Inches(0.5), Inches(1.1), Inches(0.6)]
     for row in tbl_states.rows:
         for idx, w in enumerate(col_w_st):
@@ -559,6 +583,7 @@ def build_docx(font_pt=9.5, line_sp=1.12, space_after=4.5):
     tbl_feat.alignment = WD_TABLE_ALIGNMENT.CENTER
     tbl_feat.autofit = False
     set_table_borders(tbl_feat)
+    set_table_width(tbl_feat, 3.2)
     col_w_feat = [Inches(1.0), Inches(0.8), Inches(0.7), Inches(0.7)]
     for row in tbl_feat.rows:
         for idx, w in enumerate(col_w_feat):
@@ -612,6 +637,7 @@ def build_docx(font_pt=9.5, line_sp=1.12, space_after=4.5):
     tbl_bench.alignment = WD_TABLE_ALIGNMENT.CENTER
     tbl_bench.autofit = False
     set_table_borders(tbl_bench)
+    set_table_width(tbl_bench, 3.2)
     col_w_b = [Inches(1.1), Inches(0.5), Inches(0.5), Inches(0.55), Inches(0.55)]
     for row in tbl_bench.rows:
         for idx, w in enumerate(col_w_b):
@@ -672,6 +698,7 @@ def build_docx(font_pt=9.5, line_sp=1.12, space_after=4.5):
     tbl_a.alignment = WD_TABLE_ALIGNMENT.CENTER
     tbl_a.autofit = False
     set_table_borders(tbl_a)
+    set_table_width(tbl_a, 3.0)
     col_w_a = [Inches(1.6), Inches(0.65), Inches(0.75)]
     for row in tbl_a.rows:
         for idx, w in enumerate(col_w_a):
