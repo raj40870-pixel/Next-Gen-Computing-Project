@@ -107,16 +107,11 @@ def build_docx(font_pt=9.5, line_sp=1.12, space_after=4.5):
     p_auth.paragraph_format.space_before = Pt(2)
     p_auth.paragraph_format.space_after = Pt(2)
     p_auth.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r_auth = p_auth.add_run("Kamaljit")
+    r_auth = p_auth.add_run("Kamaljit\n")
     r_auth.font.name = 'Times New Roman'
     r_auth.font.size = Pt(12)
     r_auth.font.bold = True
     r_auth.font.color.rgb = BLACK
-    
-    r_sub = p_auth.add_run(", Member, IEEE\n")
-    r_sub.font.name = 'Times New Roman'
-    r_sub.font.size = Pt(10)
-    r_sub.font.italic = True
 
     p_affil = doc.add_paragraph()
     p_affil.paragraph_format.space_before = Pt(0)

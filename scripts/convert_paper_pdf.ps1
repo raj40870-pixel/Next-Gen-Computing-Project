@@ -10,13 +10,15 @@ try {
     Write-Host "Opening document: $docxPath"
     # Open(FileName, ConfirmConversions, ReadOnly, AddToRecentFiles)
     $doc = $word.Documents.Open($docxPath, $false, $true, $false)
-    Write-Host "Exporting to PDF: $pdfPath"
-    # wdFormatPDF = 17
-    $doc.SaveAs([ref]$pdfPath, [ref]17)
+    Write-Host "Exporting to High-Resolution PDF: $pdfPath"
+    # wdFormatPDF = 17, wdExportOptimizeForPrint = 0
+    $doc.ExportAsFixedFormat($pdfPath, 17, $false, 0)
     $doc.Close([ref]0) # wdDoNotSaveChanges
     Write-Host "SUCCESS: PDF created successfully at $pdfPath"
 } catch {
-    Write-Host "ERROR: $_"
+    Write-Host "Fallback to SaveAs due to: $_"
+    $doc.SaveAs([ref]$pdfPath, [ref]17)
+    $doc.Close([ref]0)
 } finally {
     $word.Quit()
     [System.Runtime.InteropServices.Marshal]::ReleaseComObject($word) | Out-Null
