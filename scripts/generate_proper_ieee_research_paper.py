@@ -1,8 +1,9 @@
 r"""
 Generate Publication-Ready IEEE Two-Column Format Academic Research Paper
 Sole Author: Kamaljit (Reg No: 12516046)
-No team members included as per explicit user specification.
-Layout: Authentic IEEE 2-Column Standard Conference / Transactions Format.
+Layout: Clean, Balanced IEEE 2-Column Standard Conference / Transactions Format.
+Fixes: Explicit figure paragraph line spacing, column width containment (width=3.0 in),
+       perfect table width enforcement on all rows, and balanced multi-page figure distribution.
 """
 
 import os
@@ -10,8 +11,8 @@ import sys
 import docx
 from docx import Document
 from docx.shared import Inches, Pt, RGBColor
-from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.enum.table import WD_TABLE_ALIGNMENT, WD_ALIGN_VERTICAL
+from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING
+from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml import OxmlElement, parse_xml
 from docx.oxml.ns import nsdecls, qn
 
@@ -28,7 +29,7 @@ def set_cell_background(cell, hex_color):
     shd = parse_xml(f'<w:shd {nsdecls("w")} w:fill="{hex_color}"/>')
     tcPr.append(shd)
 
-def set_cell_margins(cell, top=80, bottom=80, left=100, right=100):
+def set_cell_margins(cell, top=60, bottom=60, left=80, right=80):
     tcPr = cell._tc.get_or_add_tcPr()
     tcMar = parse_xml(
         f'<w:tcMar {nsdecls("w")}>'
@@ -85,19 +86,19 @@ def build_paper():
 
     # Title
     p_title = doc.add_paragraph()
-    p_title.paragraph_format.space_before = Pt(8)
+    p_title.paragraph_format.space_before = Pt(6)
     p_title.paragraph_format.space_after = Pt(10)
     p_title.paragraph_format.line_spacing = 1.15
     p_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     r_title = p_title.add_run("Deep Spatio-Temporal Graph Neural Networks Coupled with Biot's Poroelastic Satellite Telemetry for Regional Aquifer Depletion Forecasting Across India")
     r_title.font.name = 'Times New Roman'
-    r_title.font.size = Pt(20)
+    r_title.font.size = Pt(19)
     r_title.font.bold = True
     r_title.font.color.rgb = NAVY
 
-    # Author Block (Sole Author: Kamaljit, No Team Members)
+    # Author Block (Sole Author: Kamaljit, No Other Team Members)
     p_auth = doc.add_paragraph()
-    p_auth.paragraph_format.space_before = Pt(4)
+    p_auth.paragraph_format.space_before = Pt(2)
     p_auth.paragraph_format.space_after = Pt(2)
     p_auth.alignment = WD_ALIGN_PARAGRAPH.CENTER
     r_auth = p_auth.add_run("Kamaljit")
@@ -133,7 +134,7 @@ def build_paper():
     
     abs_cell = abs_table.cell(0, 0)
     set_cell_background(abs_cell, "F4F6F9")
-    set_cell_margins(abs_cell, top=120, bottom=120, left=160, right=160)
+    set_cell_margins(abs_cell, top=100, bottom=100, left=140, right=140)
     
     tcPr = abs_cell._tc.get_or_add_tcPr()
     borders = parse_xml(
@@ -147,8 +148,8 @@ def build_paper():
     tcPr.append(borders)
 
     abs_p = abs_cell.paragraphs[0]
-    abs_p.paragraph_format.line_spacing = 1.15
-    abs_p.paragraph_format.space_after = Pt(6)
+    abs_p.paragraph_format.line_spacing = 1.12
+    abs_p.paragraph_format.space_after = Pt(5)
     abs_p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
     
     b_abs = abs_p.add_run("Abstract— ")
@@ -157,10 +158,10 @@ def build_paper():
     b_abs.font.color.rgb = NAVY
     
     abs_text = (
-        "Groundwater depletion across the Indian subcontinent has escalated to emergency thresholds, threatening national "
-        "food security, agrarian livelihood stability, and drinking water availability for over 400 million residents. While current "
+        "Groundwater depletion across the Indian subcontinent has reached critical thresholds, threatening national "
+        "food security, agrarian livelihood stability, and drinking water availability for over 400 million citizens. While conventional "
         "monitoring depends on sparse physical monitoring borewells characterized by high transmission latency and irregular reporting, "
-        "conventional machine learning methods (e.g., standard LSTM, Random Forest, ARIMA) fail to account for multi-scale subsurface "
+        "traditional machine learning approaches (e.g., standard LSTM, Random Forest, ARIMA) fail to account for multi-scale subsurface "
         "hydrogeological continuity, transboundary aquifer seepage, and irreversible skeletal compaction. In this paper, we propose a novel "
         "Physics-Coupled Spatio-Temporal Graph Neural Network (ST-GNN) architecture for multi-horizon groundwater depth and storage anomaly "
         "forecasting across India. The framework assimilates multi-satellite gravimetric telemetry from NASA GRACE-FO Level-3 mascons, Copernicus "
@@ -169,7 +170,7 @@ def build_paper():
         "compaction physics is integrated into the loss surface via Biot's 3D poroelastic constitutive equations, enforcing mass and stress "
         "conservation constraints. A dynamic hydrogeological Laplacian convolution operator resolves spatial boundary fluxes modulated by hydraulic "
         "conductivity, topographic hydraulic head gradients, and extraction stress, while gated recurrent units resolve multi-temporal memory states. "
-        "Empirical benchmarking across 205 districts demonstrates that the proposed ST-GNN framework achieves a Root Mean Squared Error (RMSE) of "
+        "Empirical benchmarking across 205 districts demonstrates that the proposed ST-GNN framework achieves an Root Mean Squared Error (RMSE) of "
         "0.412 m, Mean Absolute Error (MAE) of 0.308 m, and R² score of 0.941 across a 6-month forecasting horizon, delivering a 39.8% error "
         "reduction over standalone LSTM and a 64.2% reduction over classical ARIMA baselines. An autonomous 24-hour background telemetry synchronization "
         "engine and interactive climate scenario simulator provide operational intelligence for the Central Ground Water Board (CGWB) and Atal Bhujal Yojana."
@@ -197,15 +198,17 @@ def build_paper():
     sect2.left_margin = Inches(0.75)
     sect2.right_margin = Inches(0.75)
     
-    # Configure 2 columns with standard 0.3 in gutter (432 dxa)
+    # Configure 2 columns with standard 0.35 in gutter (504 dxa)
+    # Printable width: 7.0 in - 0.35 in = 6.65 in / 2 = 3.325 in column width
     sectPr2 = sect2._sectPr
-    cols = parse_xml(f'<w:cols {nsdecls("w")} w:num="2" w:space="432"/>')
+    cols = parse_xml(f'<w:cols {nsdecls("w")} w:num="2" w:space="504"/>')
     sectPr2.append(cols)
 
     def add_sec_head(num_str, title_str):
         p = doc.add_paragraph()
         p.paragraph_format.space_before = Pt(12)
         p.paragraph_format.space_after = Pt(3)
+        p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
         p.paragraph_format.keep_with_next = True
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
         r = p.add_run(f"{num_str}.  {title_str.upper()}")
@@ -216,8 +219,9 @@ def build_paper():
 
     def add_sub_head(letter_str, sub_str):
         p = doc.add_paragraph()
-        p.paragraph_format.space_before = Pt(6)
+        p.paragraph_format.space_before = Pt(8)
         p.paragraph_format.space_after = Pt(2)
+        p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
         p.paragraph_format.keep_with_next = True
         r = p.add_run(f"{letter_str}.  {sub_str}")
         r.font.name = 'Times New Roman'
@@ -230,6 +234,7 @@ def build_paper():
         p = doc.add_paragraph()
         p.paragraph_format.space_before = Pt(0)
         p.paragraph_format.space_after = Pt(space_after)
+        p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
         p.paragraph_format.line_spacing = 1.08
         p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
         r = p.add_run(text)
@@ -240,44 +245,66 @@ def build_paper():
 
     def add_eq(latex_str, eq_num):
         p = doc.add_paragraph()
-        p.paragraph_format.space_before = Pt(3)
-        p.paragraph_format.space_after = Pt(3)
+        p.paragraph_format.space_before = Pt(4)
+        p.paragraph_format.space_after = Pt(4)
+        p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
         p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
         
-        # Format equation text
         r = p.add_run(f"    {latex_str}")
         r.font.name = 'Cambria Math'
-        r.font.size = Pt(9)
+        r.font.size = Pt(8.5)
         r.font.italic = True
         
-        # Add tab and equation number
         r_num = p.add_run(f"   ({eq_num})")
         r_num.font.name = 'Times New Roman'
-        r_num.font.size = Pt(9)
+        r_num.font.size = Pt(8.5)
         r_num.font.bold = True
         r_num.font.color.rgb = NAVY
 
-    def add_fig(img_name, caption_str):
+    def add_fig_box(img_name, caption_str, width_in=3.0):
         img_path = os.path.join(FIGURES_DIR, img_name)
         if os.path.exists(img_path):
-            p = doc.add_paragraph()
-            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            p.paragraph_format.space_before = Pt(6)
-            p.paragraph_format.space_after = Pt(2)
-            p.paragraph_format.keep_with_next = True
-            run = p.add_run()
-            # Column width is ~3.25 inches
-            run.add_picture(img_path, width=Inches(3.25))
-
-            cp = doc.add_paragraph()
-            cp.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-            cp.paragraph_format.space_before = Pt(2)
-            cp.paragraph_format.space_after = Pt(6)
-            crun = cp.add_run(caption_str)
+            # Create a 2-row table container to strictly prevent text/image overlap
+            tbl = doc.add_table(rows=2, cols=1)
+            tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
+            tbl.autofit = False
+            
+            c0 = tbl.cell(0, 0)
+            c1 = tbl.cell(1, 0)
+            c0.width = Inches(width_in)
+            c1.width = Inches(width_in)
+            
+            set_cell_background(c0, "FFFFFF")
+            set_cell_background(c1, "F9FAFC")
+            set_cell_margins(c0, top=40, bottom=20, left=40, right=40)
+            set_cell_margins(c1, top=20, bottom=40, left=40, right=40)
+            
+            # Picture Paragraph in Cell 0
+            p0 = c0.paragraphs[0]
+            p0.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            p0.paragraph_format.space_before = Pt(0)
+            p0.paragraph_format.space_after = Pt(0)
+            p0.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
+            run = p0.add_run()
+            run.add_picture(img_path, width=Inches(width_in - 0.1))
+            
+            # Caption Paragraph in Cell 1
+            p1 = c1.paragraphs[0]
+            p1.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+            p1.paragraph_format.space_before = Pt(0)
+            p1.paragraph_format.space_after = Pt(0)
+            p1.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
+            crun = p1.add_run(caption_str)
             crun.font.name = 'Times New Roman'
             crun.font.size = Pt(8)
             crun.font.italic = True
             crun.font.color.rgb = DARK_GRAY
+            
+            # Buffer paragraph after table to separate from subsequent text
+            p_buf = doc.add_paragraph()
+            p_buf.paragraph_format.space_before = Pt(0)
+            p_buf.paragraph_format.space_after = Pt(6)
+            p_buf.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
 
     # =========================================================================
     # SECTION I: INTRODUCTION
@@ -321,6 +348,9 @@ def build_paper():
         "confined strata subject to deep agricultural pumpage."
     )
 
+    # Insert Fig 1 (System Architecture) cleanly inside container table
+    add_fig_box("fig1_system_architecture.png", "Fig. 1. Architectural blueprint of the proposed Physics-Coupled Spatio-Temporal Graph Neural Network (ST-GNN) pipeline.")
+
     add_sub_head("B", "Geodetic & Gravimetric Satellite Telemetry")
     add_p(
         "In response to in-situ spatial sparsity, satellite Earth observation has revolutionized hydrogeological remote sensing. "
@@ -329,9 +359,6 @@ def build_paper():
         "Concurrently, the European Space Agency's (ESA) Copernicus Sentinel-1 Synthetic Aperture Radar (InSAR) constellation provides "
         "interferometric phase observations yielding millimeter-precision Land Surface Deformation (LSD) time-series [5]."
     )
-
-    # Insert Fig 1
-    add_fig("fig1_system_architecture.png", "Fig. 1. Architectural blueprint of the proposed Physics-Coupled Spatio-Temporal Graph Neural Network (ST-GNN) pipeline.")
 
     add_sub_head("C", "Research Gap & Scientific Contributions")
     add_p(
@@ -375,8 +402,8 @@ def build_paper():
         "relation prevents unphysical machine learning predictions during catastrophic drought sequences."
     )
 
-    # Insert Fig 2
-    add_fig("fig2_geospatial_aquifer_map.png", "Fig. 2. Spatial distribution of aquifer hydraulic conductivity, monitoring wells, and critical stress blocks across 205 districts.")
+    # Insert Fig 2 (Aquifer Geospatial Map)
+    add_fig_box("fig2_geospatial_aquifer_map.png", "Fig. 2. Spatial distribution of aquifer hydraulic conductivity, monitoring wells, and critical stress blocks across 205 districts.")
 
     add_sub_head("B", "Dynamic Transmissivity Graph Construction")
     add_p(
@@ -402,9 +429,6 @@ def build_paper():
         "enables the network to learn transboundary aquifer pressure diffusion across up to 3 neighboring district tiers."
     )
 
-    # Insert Fig 3
-    add_fig("fig3_forecast_trajectory.png", "Fig. 3. Historical groundwater trajectory and 36-month ahead predictive forecast with 95% Bayesian confidence intervals.")
-
     # =========================================================================
     # SECTION III: GEOSPATIAL DATA PIPELINE & REAL-TIME SYNC
     # =========================================================================
@@ -422,8 +446,8 @@ def build_paper():
         "4) CGWB DWLR In-Situ Records: 728,450 validated physical depth-to-water-level measurements utilized for supervised calibration and auditing."
     )
 
-    # Insert Fig 4
-    add_fig("fig4_satellite_telemetry_sync.png", "Fig. 4. Automated 24-hour satellite telemetry synchronization daemon workflow and physical well sounding verification.")
+    # Insert Fig 3 (Satellite Telemetry Workflow)
+    add_fig_box("fig4_satellite_telemetry_sync.png", "Fig. 3. Automated 24-hour satellite telemetry synchronization daemon workflow and physical well sounding verification.")
 
     add_sub_head("B", "Physics-Regularized Multi-Task Loss")
     add_p(
@@ -444,31 +468,32 @@ def build_paper():
     add_sub_head("A", "Comparative Performance Analysis")
     add_p(
         "The proposed ST-GNN was rigorously benchmarked against four representative baselines: ARIMA(2,1,2), Random Forest (150 trees), "
-        "Standard 2-Layer LSTM (128 hidden units), and ConvLSTM (2D Grid). Table I reports the quantitative performance across a 6-month "
-        "forecasting horizon evaluated on out-of-sample test data (2025–2026)."
+        "Standard 2-Layer LSTM (128 hidden units), and ConvLSTM (2D Grid). Table I reports quantitative performance across a 6-month "
+        "forecasting horizon on test data (2025–2026)."
     )
 
-    # TABLE I: BENCHMARKING TABLE
+    # TABLE I: BENCHMARKING TABLE (Strictly sized for column width)
     tbl_b = doc.add_table(rows=6, cols=4)
     tbl_b.alignment = WD_TABLE_ALIGNMENT.CENTER
     tbl_b.autofit = False
     set_table_borders(tbl_b)
 
-    tbl_b.rows[0].cells[0].width = Inches(1.3)
-    tbl_b.rows[0].cells[1].width = Inches(0.65)
-    tbl_b.rows[0].cells[2].width = Inches(0.65)
-    tbl_b.rows[0].cells[3].width = Inches(0.65)
+    col_w_b = [Inches(1.2), Inches(0.6), Inches(0.6), Inches(0.6)]
+    for row in tbl_b.rows:
+        for idx, w in enumerate(col_w_b):
+            row.cells[idx].width = w
 
     headers_b = ["Model", "RMSE (m)", "MAE (m)", "R² Score"]
     for idx, text in enumerate(headers_b):
         c = tbl_b.cell(0, idx)
         set_cell_background(c, "1B365D")
-        set_cell_margins(c, top=50, bottom=50, left=50, right=50)
+        set_cell_margins(c, top=40, bottom=40, left=40, right=40)
         p = c.paragraphs[0]
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
         run = p.add_run(text)
         run.font.bold = True
-        run.font.size = Pt(8)
+        run.font.size = Pt(7.5)
         run.font.color.rgb = RGBColor(255, 255, 255)
 
     data_b = [
@@ -484,19 +509,21 @@ def build_paper():
         for c_idx, val in enumerate(row_data):
             c = tbl_b.cell(r_idx, c_idx)
             set_cell_background(c, bg)
-            set_cell_margins(c, top=40, bottom=40, left=50, right=50)
+            set_cell_margins(c, top=30, bottom=30, left=40, right=40)
             p = c.paragraphs[0]
             p.alignment = WD_ALIGN_PARAGRAPH.LEFT if c_idx == 0 else WD_ALIGN_PARAGRAPH.CENTER
+            p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
             run = p.add_run(val)
-            run.font.size = Pt(8)
+            run.font.size = Pt(7.5)
             if r_idx == 5:
                 run.font.bold = True
                 run.font.color.rgb = NAVY
 
-    doc.add_paragraph().paragraph_format.space_after = Pt(2)
     p_cap1 = doc.add_paragraph()
     p_cap1.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_cap1.paragraph_format.space_before = Pt(2)
     p_cap1.paragraph_format.space_after = Pt(6)
+    p_cap1.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
     r_c1 = p_cap1.add_run("TABLE I: Performance Benchmarking on 6-Month Horizon")
     r_c1.font.size = Pt(7.5)
     r_c1.font.bold = True
@@ -507,8 +534,8 @@ def build_paper():
         "stems from the spatial Laplacian convolutions propagating transboundary recharge pulses across administrative zones."
     )
 
-    # Insert Fig 6
-    add_fig("fig6_model_benchmarking.png", "Fig. 5. Multi-horizon error progression comparing ST-GNN against baseline architectures.")
+    # Insert Fig 4 (Model Benchmarking Curves)
+    add_fig_box("fig6_model_benchmarking.png", "Fig. 4. Multi-horizon error progression comparing ST-GNN against baseline architectures.")
 
     add_sub_head("B", "Ablation Study")
     add_p(
@@ -517,26 +544,28 @@ def build_paper():
         "compaction constraints prevent erratic divergent projections during extreme drought sequences."
     )
 
-    # TABLE II: ABLATION TABLE
+    # TABLE II: ABLATION TABLE (Strictly sized for column width)
     tbl_a = doc.add_table(rows=4, cols=3)
     tbl_a.alignment = WD_TABLE_ALIGNMENT.CENTER
     tbl_a.autofit = False
     set_table_borders(tbl_a)
 
-    tbl_a.rows[0].cells[0].width = Inches(1.8)
-    tbl_a.rows[0].cells[1].width = Inches(0.7)
-    tbl_a.rows[0].cells[2].width = Inches(0.75)
+    col_w_a = [Inches(1.6), Inches(0.65), Inches(0.75)]
+    for row in tbl_a.rows:
+        for idx, w in enumerate(col_w_a):
+            row.cells[idx].width = w
 
     headers_a = ["Configuration", "RMSE (m)", "Δ Performance"]
     for idx, text in enumerate(headers_a):
         c = tbl_a.cell(0, idx)
         set_cell_background(c, "1B365D")
-        set_cell_margins(c, top=50, bottom=50, left=50, right=50)
+        set_cell_margins(c, top=40, bottom=40, left=40, right=40)
         p = c.paragraphs[0]
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
         run = p.add_run(text)
         run.font.bold = True
-        run.font.size = Pt(8)
+        run.font.size = Pt(7.5)
         run.font.color.rgb = RGBColor(255, 255, 255)
 
     data_a = [
@@ -550,16 +579,18 @@ def build_paper():
         for c_idx, val in enumerate(row_data):
             c = tbl_a.cell(r_idx, c_idx)
             set_cell_background(c, bg)
-            set_cell_margins(c, top=40, bottom=40, left=50, right=50)
+            set_cell_margins(c, top=30, bottom=30, left=40, right=40)
             p = c.paragraphs[0]
             p.alignment = WD_ALIGN_PARAGRAPH.LEFT if c_idx == 0 else WD_ALIGN_PARAGRAPH.CENTER
+            p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
             run = p.add_run(val)
-            run.font.size = Pt(8)
+            run.font.size = Pt(7.5)
 
-    doc.add_paragraph().paragraph_format.space_after = Pt(2)
     p_cap2 = doc.add_paragraph()
     p_cap2.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_cap2.paragraph_format.space_before = Pt(2)
     p_cap2.paragraph_format.space_after = Pt(6)
+    p_cap2.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
     r_c2 = p_cap2.add_run("TABLE II: Ablation Analysis of Key Modules")
     r_c2.font.size = Pt(7.5)
     r_c2.font.bold = True
@@ -575,8 +606,11 @@ def build_paper():
         "decision-makers can model aquifer survival horizons under simulated Representative Concentration Pathway (RCP) conditions."
     )
 
-    # Insert Fig 5
-    add_fig("fig5_climate_scenario_simulation.png", "Fig. 6. Multi-year scenario simulations under severe drought (-30% rain, +20% pumping) vs. managed aquifer recharge.")
+    # Insert Fig 5 (Forecast Trajectory)
+    add_fig_box("fig3_forecast_trajectory.png", "Fig. 5. Historical groundwater trajectory and 36-month ahead predictive forecast with 95% Bayesian confidence intervals.")
+
+    # Insert Fig 6 (Climate Scenario Simulations)
+    add_fig_box("fig5_climate_scenario_simulation.png", "Fig. 6. Multi-year scenario simulations under severe drought (-30% rain, +20% pumping) vs. managed aquifer recharge.")
 
     add_p(
         "Simulations indicate that under severe drought conditions in central Punjab and north-western Rajasthan, critical alluvial aquifers "
@@ -609,6 +643,8 @@ def build_paper():
     p_ack = doc.add_paragraph()
     p_ack.paragraph_format.space_before = Pt(8)
     p_ack.paragraph_format.space_after = Pt(2)
+    p_ack.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
+    p_ack.paragraph_format.keep_with_next = True
     r_ah = p_ack.add_run("ACKNOWLEDGMENT")
     r_ah.font.bold = True
     r_ah.font.size = Pt(9)
@@ -629,6 +665,8 @@ def build_paper():
     p_ref = doc.add_paragraph()
     p_ref.paragraph_format.space_before = Pt(10)
     p_ref.paragraph_format.space_after = Pt(4)
+    p_ref.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
+    p_ref.paragraph_format.keep_with_next = True
     r_rh = p_ref.add_run("REFERENCES")
     r_rh.font.bold = True
     r_rh.font.size = Pt(9.5)
@@ -667,6 +705,7 @@ def build_paper():
         p = doc.add_paragraph()
         p.paragraph_format.space_before = Pt(0)
         p.paragraph_format.space_after = Pt(2)
+        p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
         p.paragraph_format.line_spacing = 1.02
         p.paragraph_format.left_indent = Inches(0.2)
         p.paragraph_format.first_line_indent = Inches(-0.2)
