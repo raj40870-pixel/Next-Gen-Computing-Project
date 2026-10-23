@@ -5,5 +5,5 @@ echo   Launching Groundwater Depletion Forecasting Web Dashboard
 echo   Using Satellite InSAR and Rainfall Data Fusion (ST-GNN)
 echo ======================================================================
 echo.
-streamlit run app.py
+python -m streamlit run app.py
 pause

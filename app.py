@@ -48,15 +48,28 @@ st.markdown("""
         margin-bottom: 0.3rem;
         letter-spacing: -0.02em;
         line-height: 1.25;
+        animation: fadeInDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
     .sub-header {
         font-size: clamp(0.85rem, 1.6vw, 1.02rem);
         color: #475569;
         margin-bottom: 1.2rem;
         line-height: 1.5;
+        animation: fadeInDown 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
-    /* Modern Responsive KPI Grid */
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Modern Responsive KPI Grid & Animations */
     .kpi-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -69,11 +82,13 @@ st.markdown("""
         border-radius: 12px;
         padding: 14px 16px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        transition: transform 0.15s ease, box-shadow 0.15s ease;
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease !important;
+        animation: cardEntrance 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
     .kpi-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        transform: translateY(-4px) scale(1.01) !important;
+        box-shadow: 0 10px 22px -3px rgba(2, 132, 199, 0.16), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+        border-color: #bae6fd !important;
     }
     .kpi-title {
         font-size: 0.76rem;
@@ -82,18 +97,34 @@ st.markdown("""
         letter-spacing: 0.05em;
         color: #64748b;
         margin-bottom: 4px;
+        transition: color 0.2s ease;
     }
     .kpi-value {
         font-size: clamp(1.2rem, 2.2vw, 1.6rem);
         font-weight: 700;
         color: #0f172a;
         line-height: 1.2;
+        transition: transform 0.2s ease;
+    }
+    .kpi-card:hover .kpi-value {
+        transform: scale(1.02);
     }
     .kpi-sub {
         font-size: 0.75rem;
         color: #0284c7;
         margin-top: 4px;
         font-weight: 500;
+    }
+
+    @keyframes cardEntrance {
+        from {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     /* Action Banner */
@@ -103,6 +134,12 @@ st.markdown("""
         border-radius: 12px;
         padding: 14px 18px;
         margin-bottom: 1.0rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        animation: fadeInDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .action-banner:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(2, 132, 199, 0.12);
     }
     .action-title {
         font-size: 0.95rem;
@@ -122,6 +159,12 @@ st.markdown("""
         border-radius: 8px;
         padding: 16px;
         margin-bottom: 1.2rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        animation: fadeInDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .accuracy-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(16, 185, 129, 0.1);
     }
 
     /* Search Container */
@@ -131,6 +174,418 @@ st.markdown("""
         padding: 14px;
         margin-bottom: 15px;
         border: 1px solid #cbd5e1;
+        transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .search-box-container:focus-within {
+        border-color: #0284c7;
+        box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+
+    /* -------------------------------------------------------------
+       DROPDOWN MENUS & SELECTBOX ANIMATIONS
+       ------------------------------------------------------------- */
+    /* Animated dropdown popup container */
+    div[data-baseweb="popover"],
+    div[data-baseweb="popover"] > div,
+    ul[role="listbox"],
+    div[role="listbox"],
+    ul[data-baseweb="menu"] {
+        animation: dropdownMenuOpen 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+        transform-origin: top center !important;
+        border-radius: 12px !important;
+        box-shadow: 0 12px 30px -4px rgba(15, 23, 42, 0.16), 0 6px 12px -3px rgba(15, 23, 42, 0.08) !important;
+        border: 1px solid #cbd5e1 !important;
+        overflow: hidden !important;
+    }
+
+    @keyframes dropdownMenuOpen {
+        0% {
+            opacity: 0;
+            transform: translateY(-8px) scale(0.97);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    /* Animated dropdown items with smooth glide and hover */
+    li[role="option"],
+    div[role="option"],
+    li[data-baseweb="menu-item"] {
+        transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        border-left: 3px solid transparent !important;
+        border-radius: 6px !important;
+        margin: 2px 4px !important;
+        animation: optionGlide 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    li[role="option"]:nth-child(1) { animation-delay: 0.02s; }
+    li[role="option"]:nth-child(2) { animation-delay: 0.04s; }
+    li[role="option"]:nth-child(3) { animation-delay: 0.06s; }
+    li[role="option"]:nth-child(4) { animation-delay: 0.08s; }
+    li[role="option"]:nth-child(5) { animation-delay: 0.10s; }
+    li[role="option"]:nth-child(6) { animation-delay: 0.12s; }
+    li[role="option"]:nth-child(7) { animation-delay: 0.14s; }
+    li[role="option"]:nth-child(8) { animation-delay: 0.16s; }
+
+    @keyframes optionGlide {
+        from {
+            opacity: 0;
+            transform: translateX(-6px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    li[role="option"]:hover,
+    div[role="option"]:hover,
+    li[data-baseweb="menu-item"]:hover {
+        transform: translateX(4px) !important;
+        background: rgba(2, 132, 199, 0.1) !important;
+        color: #0369a1 !important;
+        border-left: 3px solid #0284c7 !important;
+    }
+
+    li[role="option"][aria-selected="true"],
+    div[role="option"][aria-selected="true"] {
+        background: rgba(2, 132, 199, 0.14) !important;
+        font-weight: 600 !important;
+        border-left: 3px solid #0284c7 !important;
+    }
+
+    /* Dropdown Trigger Box */
+    div[data-baseweb="select"] > div {
+        transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        border-radius: 8px !important;
+    }
+
+    div[data-baseweb="select"] > div:hover {
+        border-color: #0284c7 !important;
+        box-shadow: 0 2px 8px rgba(2, 132, 199, 0.12) !important;
+    }
+
+    div[data-baseweb="select"] > div:focus-within {
+        border-color: #0284c7 !important;
+        box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2) !important;
+        transform: translateY(-1px) !important;
+    }
+
+    div[data-baseweb="select"] svg {
+        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    div[data-baseweb="select"]:focus-within svg {
+        transform: rotate(180deg) !important;
+        color: #0284c7 !important;
+    }
+
+    /* -------------------------------------------------------------
+       PROCESSING & PAUSE STATE: RYTHMIC FLASHING GRAYOUT & PULSING LOADING ICON
+       ------------------------------------------------------------- */
+    /* Rhythmic flashing frosted backdrop when processing and interface pauses */
+    .stApp[data-test-script-state="running"]::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 999998;
+        pointer-events: none;
+        cursor: wait;
+        animation: rhythmicGrayoutFlash 1.3s ease-in-out infinite alternate !important;
+    }
+
+    @keyframes rhythmicGrayoutFlash {
+        0% {
+            background: radial-gradient(circle at center, rgba(15, 23, 42, 0.16) 0%, rgba(15, 23, 42, 0.36) 100%);
+            backdrop-filter: blur(1.5px);
+            -webkit-backdrop-filter: blur(1.5px);
+        }
+        100% {
+            background: radial-gradient(circle at center, rgba(15, 23, 42, 0.52) 0%, rgba(15, 23, 42, 0.76) 100%);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+    }
+
+    /* Centered Glowing Looping Loading Icon that rotates continuously AND follows the rhythmic flash pulse */
+    .stApp[data-test-script-state="running"]::after {
+        content: "";
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 62px;
+        height: 62px;
+        margin-top: -31px;
+        margin-left: -31px;
+        border-radius: 50%;
+        border: 4px solid rgba(255, 255, 255, 0.25);
+        border-top: 4px solid #0284c7;
+        border-right: 4px solid #38bdf8;
+        border-bottom: 4px solid rgba(2, 132, 199, 0.45);
+        z-index: 999999;
+        pointer-events: none;
+        animation: loopSpinRotate 0.85s linear infinite, rhythmicIconPulse 1.3s ease-in-out infinite alternate !important;
+    }
+
+    @keyframes loopSpinRotate {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes rhythmicIconPulse {
+        0% {
+            scale: 0.90;
+            box-shadow: 0 0 16px rgba(2, 132, 199, 0.4), 0 4px 18px rgba(0, 0, 0, 0.25);
+            border-color: rgba(255, 255, 255, 0.2);
+            border-top-color: #0284c7;
+            border-right-color: #38bdf8;
+            filter: brightness(0.95);
+        }
+        100% {
+            scale: 1.16;
+            box-shadow: 0 0 48px rgba(56, 189, 248, 0.95), 0 0 80px rgba(2, 132, 199, 0.75), 0 8px 36px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.45);
+            border-top-color: #38bdf8;
+            border-right-color: #67e8f9;
+            filter: brightness(1.3);
+        }
+    }
+
+    /* Stale/Paused elements rhythmic flashing grayout transition - strictly scoped to running state */
+    .stApp[data-test-script-state="running"] div[data-stale="true"] {
+        animation: rhythmicStaleFlash 1.3s ease-in-out infinite alternate !important;
+    }
+
+    @keyframes rhythmicStaleFlash {
+        0% {
+            opacity: 0.65 !important;
+            filter: blur(0.2px) brightness(0.96) !important;
+        }
+        100% {
+            opacity: 0.26 !important;
+            filter: blur(0.9px) brightness(0.75) !important;
+        }
+    }
+
+    /* Streamlit Spinner Component Enhancement - In Sync with Rhythmic Pulse */
+    div[data-testid="stSpinner"] {
+        display: flex;
+        align-items: center;
+        background: linear-gradient(135deg, rgba(240, 249, 255, 0.95), rgba(224, 242, 254, 0.95));
+        border: 1px solid #7dd3fc;
+        border-left: 5px solid #0284c7;
+        border-radius: 10px;
+        padding: 12px 18px;
+        margin: 10px 0;
+        box-shadow: 0 4px 14px rgba(2, 132, 199, 0.12);
+        animation: rhythmicSpinnerPulse 1.3s ease-in-out infinite alternate !important;
+    }
+
+    div[data-testid="stSpinner"] > div {
+        border-top-color: #0284c7 !important;
+        border-right-color: #38bdf8 !important;
+        animation: loopSpinRotate 0.75s linear infinite, rhythmicIconPulse 1.3s ease-in-out infinite alternate !important;
+    }
+
+    @keyframes rhythmicSpinnerPulse {
+        0% {
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.12);
+            border-color: #7dd3fc;
+            transform: scale(0.99);
+        }
+        100% {
+            box-shadow: 0 8px 26px rgba(2, 132, 199, 0.35);
+            border-color: #0284c7;
+            transform: scale(1.02);
+        }
+    }
+
+    /* Status Widget Pulse in Header */
+    div[data-testid="stStatusWidget"] {
+        animation: rhythmicStatusPulse 1.3s ease-in-out infinite alternate !important;
+    }
+
+    @keyframes rhythmicStatusPulse {
+        0% {
+            transform: scale(0.95);
+            filter: brightness(0.95);
+        }
+        100% {
+            transform: scale(1.06);
+            filter: brightness(1.25) drop-shadow(0 0 10px rgba(2, 132, 199, 0.6));
+        }
+    }
+
+    /* -------------------------------------------------------------
+       ANIMATIONS FOR ALL SUITABLE FIELDS & COMPONENTS
+       ------------------------------------------------------------- */
+    /* Interactive Buttons */
+    .stButton > button {
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        border-radius: 8px !important;
+        position: relative;
+        overflow: hidden;
+    }
+    .stButton > button:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 16px rgba(2, 132, 199, 0.25) !important;
+    }
+    .stButton > button:active {
+        transform: translateY(1px) scale(0.98) !important;
+        box-shadow: 0 2px 6px rgba(2, 132, 199, 0.2) !important;
+    }
+
+    /* Text & Number Inputs */
+    div[data-testid="stTextInput"] input,
+    div[data-testid="stNumberInput"] input {
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease !important;
+        border-radius: 8px !important;
+    }
+    div[data-testid="stTextInput"] input:hover,
+    div[data-testid="stNumberInput"] input:hover {
+        border-color: #0284c7 !important;
+    }
+    div[data-testid="stTextInput"] input:focus,
+    div[data-testid="stNumberInput"] input:focus {
+        border-color: #0284c7 !important;
+        box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2) !important;
+        transform: translateY(-1px);
+    }
+
+    /* Sliders */
+    div[data-testid="stSlider"] div[role="slider"] {
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease !important;
+    }
+    div[data-testid="stSlider"] div[role="slider"]:hover {
+        transform: scale(1.25) !important;
+        box-shadow: 0 0 12px rgba(2, 132, 199, 0.5) !important;
+    }
+    div[data-testid="stSlider"] div[role="slider"]:active {
+        transform: scale(1.35) !important;
+        box-shadow: 0 0 16px rgba(2, 132, 199, 0.7) !important;
+    }
+
+    /* Radio Buttons */
+    div[data-testid="stRadio"] label {
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        padding: 5px 8px !important;
+        border-radius: 6px !important;
+    }
+    div[data-testid="stRadio"] label:hover {
+        background: rgba(2, 132, 199, 0.08) !important;
+        transform: translateX(4px) !important;
+    }
+
+    /* Expanders */
+    div[data-testid="stExpander"] {
+        border-radius: 10px !important;
+        transition: box-shadow 0.2s ease, border-color 0.2s ease !important;
+    }
+    div[data-testid="stExpander"]:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+        border-color: #cbd5e1 !important;
+    }
+    div[data-testid="stExpander"] summary svg {
+        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    div[data-testid="stExpanderDetails"] {
+        animation: expanderOpen 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    }
+
+    @keyframes expanderOpen {
+        from {
+            opacity: 0;
+            transform: translateY(-6px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Tabs */
+    div[data-testid="stTab"] {
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        border-radius: 6px 6px 0 0 !important;
+    }
+    div[data-testid="stTab"]:hover {
+        color: #0284c7 !important;
+        background: rgba(2, 132, 199, 0.06) !important;
+    }
+    div[data-testid="stTabPanel"] {
+        animation: tabFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    }
+
+    @keyframes tabFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(4px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Alert Boxes */
+    div[data-testid="stAlert"] {
+        border-radius: 10px !important;
+        animation: alertSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+        transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+    div[data-testid="stAlert"]:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    @keyframes alertSlideIn {
+        from {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* Metrics */
+    div[data-testid="stMetric"] {
+        transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+        border-radius: 8px !important;
+        padding: 8px !important;
+    }
+    div[data-testid="stMetric"]:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(2, 132, 199, 0.1);
+    }
+
+    /* Sidebar Navigation Items */
+    section[data-testid="stSidebar"] div[data-testid="stRadio"] label {
+        transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        border-radius: 8px !important;
+    }
+    section[data-testid="stSidebar"] div[data-testid="stRadio"] label:hover {
+        background: rgba(2, 132, 199, 0.12) !important;
+        transform: translateX(5px) !important;
+    }
+
+    /* DataFrames */
+    div[data-testid="stDataFrame"] {
+        transition: box-shadow 0.25s ease !important;
+        border-radius: 8px !important;
+        overflow: hidden;
+    }
+    div[data-testid="stDataFrame"]:hover {
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
     }
 
     /* Mobile Enhancements */
@@ -324,6 +779,19 @@ nav_options = [
 if "active_nav" not in st.session_state:
     st.session_state["active_nav"] = nav_options[0]
 
+def _on_sidebar_nav_change():
+    st.session_state["active_nav"] = st.session_state["sidebar_radio"]
+    st.session_state["top_quick_nav"] = st.session_state["sidebar_radio"]
+
+def _on_top_nav_change():
+    st.session_state["active_nav"] = st.session_state["top_quick_nav"]
+    st.session_state["sidebar_radio"] = st.session_state["top_quick_nav"]
+
+if "sidebar_radio" not in st.session_state:
+    st.session_state["sidebar_radio"] = st.session_state["active_nav"]
+if "top_quick_nav" not in st.session_state:
+    st.session_state["top_quick_nav"] = st.session_state["active_nav"]
+
 # Sidebar Setup
 st.sidebar.image("https://img.icons8.com/color/96/satellite-sending-signal.png", width=70)
 st.sidebar.title("GroundWatch ST-GNN")
@@ -332,10 +800,9 @@ st.sidebar.caption("Pan-India Groundwater AI | 23 Punjab + Multi-State Nodes")
 sidebar_choice = st.sidebar.radio(
     "Navigation Menu",
     nav_options,
-    index=nav_options.index(st.session_state["active_nav"]),
-    key="sidebar_radio"
+    key="sidebar_radio",
+    on_change=_on_sidebar_nav_change
 )
-st.session_state["active_nav"] = sidebar_choice
 
 # Quick Sidebar Sync Status
 sync_status_path = os.path.join("data", "processed", "sync_status.json")
@@ -385,12 +852,9 @@ with col_nav_m:
     top_nav_choice = st.selectbox(
         "📱 Switch View / Module:",
         nav_options,
-        index=nav_options.index(st.session_state["active_nav"]),
-        key="top_quick_nav"
+        key="top_quick_nav",
+        on_change=_on_top_nav_change
     )
-    if top_nav_choice != st.session_state["active_nav"]:
-        st.session_state["active_nav"] = top_nav_choice
-        st.rerun()
 
 menu_choice = st.session_state["active_nav"]
 
