@@ -512,12 +512,40 @@ def load_all_data():
 df_timeseries, district_meta, benchmark_res, latest_forecast = load_all_data()
 
 # -------------------------------------------------------------
+# Smart 24-Hour Satellite Orbit Auto-Sync (Persistent 24-Hr Cooldown)
+# Automatically syncs satellite data once every 24 hours.
+# If reopened 5 mins or 10 mins later, it skips sync and opens instantly (0s wait)!
 # -------------------------------------------------------------
-# Stable Baseline: Preserves exact research data & prevents random reset
-# -------------------------------------------------------------
-if 'auto_sync_checked' not in st.session_state:
-    st.session_state['auto_sync_checked'] = True
-    # Live sync available on-demand via sidebar button
+SYNC_INTERVAL_HOURS = 24
+
+def check_daily_satellite_autosync():
+    sync_file = os.path.join("data", "processed", "sync_status.json")
+    if not os.path.exists(sync_file):
+        return
+    try:
+        from datetime import datetime
+        with open(sync_file, "r", encoding="utf-8") as f:
+            s_data = json.load(f)
+        last_str = s_data.get("last_sync_timestamp")
+        if not last_str:
+            return
+        last_dt = datetime.strptime(last_str, "%Y-%m-%d %H:%M:%S")
+        hours_passed = (datetime.now() - last_dt).total_seconds() / 3600.0
+        
+        # Only auto-sync if a full 24 hours have elapsed since last sync
+        if hours_passed >= SYNC_INTERVAL_HOURS and "daily_sync_attempted" not in st.session_state:
+            st.session_state["daily_sync_attempted"] = True
+            from src.live_sync import LiveSatelliteSync
+            syncer = LiveSatelliteSync()
+            with st.spinner("🛰️ New 24-hr satellite orbit pass detected! Auto-updating daily telemetry..."):
+                syncer.sync_all_districts()
+                st.cache_data.clear()
+                st.toast("🟢 24-Hour Satellite Pass Auto-Updated!", icon="🛰️")
+                st.rerun()
+    except Exception as e:
+        print(f"[!] Smart auto-sync check error: {e}")
+
+check_daily_satellite_autosync()
 def render_district_selector(key_prefix: str = "main"):
     """
     Renders state filter, search input, and searchable selectbox displaying FULL NAMES:
