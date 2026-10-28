@@ -512,41 +512,12 @@ def load_all_data():
 df_timeseries, district_meta, benchmark_res, latest_forecast = load_all_data()
 
 # -------------------------------------------------------------
-# Autonomous On-Load Satellite Sync Hook
-# Automatically polls APIs when website loads if data is > 12 hours old
 # -------------------------------------------------------------
-if "auto_sync_checked" not in st.session_state:
-    st.session_state["auto_sync_checked"] = True
-    try:
-        from src.live_sync import LiveSatelliteSync
-        from datetime import datetime
-        syncer = LiveSatelliteSync()
-        last_t_str = syncer.config.get("last_sync_timestamp")
-        needs_auto_sync = False
-        if not last_t_str:
-            needs_auto_sync = True
-        else:
-            try:
-                last_dt = datetime.strptime(last_t_str, "%Y-%m-%d %H:%M:%S")
-                # Auto-sync on page load if older than 12 hours
-                if (datetime.now() - last_dt).total_seconds() >= 12 * 3600:
-                    needs_auto_sync = True
-            except Exception:
-                needs_auto_sync = True
-
-        if needs_auto_sync:
-            with st.spinner("🛰️ Auto-fetching latest satellite telemetry & updating regional forecasts..."):
-                sync_res = syncer.sync_all_districts()
-                st.cache_data.clear()
-                st.session_state["last_synced_res"] = sync_res
-                st.toast("🟢 Live Satellite Telemetry Auto-Updated on Load!", icon="🛰️")
-                st.rerun()
-    except Exception as e:
-        print(f"[!] Auto-sync on page load skipped: {e}")
-
+# Stable Baseline: Preserves exact research data & prevents random reset
 # -------------------------------------------------------------
-# Reusable Search & State Filter Helper
-# -------------------------------------------------------------
+if 'auto_sync_checked' not in st.session_state:
+    st.session_state['auto_sync_checked'] = True
+    # Live sync available on-demand via sidebar button
 def render_district_selector(key_prefix: str = "main"):
     """
     Renders state filter, search input, and searchable selectbox displaying FULL NAMES:
