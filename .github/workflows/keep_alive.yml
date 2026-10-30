@@ -1,0 +1,17 @@
+name: Keep Groundwater ST-GNN Alive 24/7
+
+on:
+  schedule:
+    # Runs every 4 hours to keep the Streamlit app awake 24/7
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Streamlit Cloud App
+        run: |
+          echo "Pinging https://groundwater-stgnn.streamlit.app to maintain 24/7 active state..."
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://groundwater-stgnn.streamlit.app || true)
+          echo "Response code: $STATUS"
