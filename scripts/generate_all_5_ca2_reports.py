@@ -1,6 +1,12 @@
 r"""
 Generate 5 Separate Individual CA2 Project Reports
-1 for each student with personalized cover page and tailored individual contribution section.
+Exact Corrected Names & Registration Numbers:
+1. Mantaj Singh (12512695)
+2. Kamaljit (12516046)
+3. Elijah Afriyie Boakye (12505587)
+4. Sahil (12527642)
+5. Krish (12516229)
+Supervisor: Er. Jasleen Kaur Panetal
 """
 
 import os
@@ -10,8 +16,6 @@ from docx import Document
 from docx.shared import Inches, Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT
-from docx.oxml import parse_xml
-from docx.oxml.ns import nsdecls
 
 TEMPLATE_PATH = r"C:\Users\Kamaljit\Downloads\CA2_Format.docx"
 OUT_FOLDER = r"C:\Users\Kamaljit\OneDrive\Desktop\CA2_Individual_Reports"
@@ -31,22 +35,22 @@ STUDENTS = [
         "evidence": "GitHub repository commits (raj40870-pixel/Next-Gen-Computing-Project), core source code modules (app.py, src/models/st_gnn.py, src/models/biot_poroelastic.py), and master IEEE research paper."
     },
     {
-        "name": "Mandeep",
-        "reg_no": "12512695",
-        "file_prefix": "CA2_Report_Mandeep_12512695",
-        "role": "Data Ingestion & Ground-Truth Analyst",
-        "resp": "CGWB 2023 National Compilation ground-truth dataset acquisition, multi-state telemetry mapping, NASA GRACE-FO gravimetry and Sentinel-1 InSAR coordinate harmonization, and Chauvenet statistical outlier filtering.",
-        "completed": "Cataloged depth-to-water-level metrics for 205 districts across 10 states (including all 23 districts of Punjab); verified data consistency against historical CGWB piezometer trends; established telemetry feature dictionaries (Table III); and implemented Chauvenet outlier rejection rules.",
-        "evidence": "Geospatial data catalogs (data/raw, data/processed), feature dictionary documentation, telemetry mapping sheets, and ground-truth verification logs."
-    },
-    {
-        "name": "Isaiah Ephraim Boye",
+        "name": "Elijah Afriyie Boakye",
         "reg_no": "12505587",
-        "file_prefix": "CA2_Report_Isaiah_12505587",
+        "file_prefix": "CA2_Report_Elijah_12505587",
         "role": "Co-Developer & Environment Specialist",
         "resp": "Localhost runtime environment setup (Python 3.12, PyTorch CUDA/TorchScript, Streamlit port 8501), dependency conflict resolution, tensor shape debugging, and live pipeline performance profiling.",
         "completed": "Configured local environment dependencies (requirements.txt); validated ST-GNN forward inference latency (0.42s on GPU); tested local Streamlit port 8501 accessibility; assisted in integrating data loaders with the front-end router; and verified model stability.",
         "evidence": "Localhost server deployment logs, requirements.txt environment configuration, execution profiling traces, and local test run records."
+    },
+    {
+        "name": "Mantaj Singh",
+        "reg_no": "12512695",
+        "file_prefix": "CA2_Report_Mantaj_Singh_12512695",
+        "role": "Data Ingestion & Ground-Truth Analyst",
+        "resp": "CGWB 2023 National Compilation ground-truth dataset acquisition, multi-state telemetry mapping, NASA GRACE-FO gravimetry and Sentinel-1 InSAR coordinate harmonization, and Chauvenet statistical outlier filtering.",
+        "completed": "Cataloged depth-to-water-level metrics for 205 districts across 10 states (including all 23 districts of Punjab); verified data consistency against historical CGWB piezometer trends; established telemetry feature dictionaries (Table III); and implemented Chauvenet outlier rejection rules.",
+        "evidence": "Geospatial data catalogs (data/raw, data/processed), feature dictionary documentation, telemetry mapping sheets, and ground-truth verification logs."
     },
     {
         "name": "Sahil",
@@ -58,9 +62,9 @@ STUDENTS = [
         "evidence": "UI wireframe sketches, black-box test suite logs, boundary validation records, and UI responsiveness defect sheets."
     },
     {
-        "name": "Trish",
+        "name": "Krish",
         "reg_no": "12516229",
-        "file_prefix": "CA2_Report_Trish_12516229",
+        "file_prefix": "CA2_Report_Krish_12516229",
         "role": "Literature Review & Documentation Lead",
         "resp": "Literature survey of prior hydrological forecasting models (ARIMA, LSTM, ConvLSTM), compilation of academic references, and structural drafting of the CA2 project evaluation report.",
         "completed": "Authored the background literature review highlighting limitations of Euclidean grid models; compiled 35 peer-reviewed references (IEEE, Nature, CGWB); structured the project report documentation and user manual; and prepared presentation slide decks.",
@@ -71,7 +75,7 @@ STUDENTS = [
 def build_student_report(stud):
     doc = Document(TEMPLATE_PATH)
     
-    # 1. Personalized Cover Page
+    # 1. Cover Page
     for p in doc.paragraphs[:25]:
         if "Project Title:" in p.text:
             p.text = "Project Title: GroundWatch ST-GNN: Physics-Coupled Spatio-Temporal Graph Neural Networks with Biot's Poroelastic Satellite Telemetry for Regional Aquifer Depletion Forecasting Across India"
@@ -281,23 +285,22 @@ def build_student_report(stud):
             t6.cell(r_idx, c_idx).text = val
             t6.cell(r_idx, c_idx).paragraphs[0].runs[0].font.size = Pt(8.5)
 
-    # Table 7: Team Details
+    # Table 7: Team Details (Mantaj Singh, Kamaljit, Elijah Afriyie Boakye, Sahil, Krish)
     t7 = doc.tables[7]
     while len(t7.rows) < 6:
         t7.add_row()
     
     team_data = [
-        ("1", "Mandeep", "12512695", "Data Ingestion & Ground-Truth Analyst", "CGWB 2023 district ground-truth compilation, NASA & Sentinel-1 data parsing, Chauvenet outlier rejection."),
+        ("1", "Mantaj Singh", "12512695", "Data Ingestion & Ground-Truth Analyst", "CGWB 2023 district ground-truth compilation, NASA & Sentinel-1 data parsing, Chauvenet outlier rejection."),
         ("2", "Kamaljit", "12516046", "Lead System Architect & Core AI Developer", "Core ST-GNN architecture, Biot poroelastic physics loss formulation, Streamlit web app (app.py), system integration."),
-        ("3", "Isaiah Ephraim Boye", "12505587", "Co-Developer & Environment Specialist", "Localhost server setup, dependency resolution, PyTorch tensor acceleration, live pipeline testing."),
+        ("3", "Elijah Afriyie Boakye", "12505587", "Co-Developer & Environment Specialist", "Localhost server setup, dependency resolution, PyTorch tensor acceleration, live pipeline testing."),
         ("4", "Sahil", "12527642", "UI/UX Wireframing & Quality Assurance", "Screen wireframing, black-box UI testing, state/district filter validation, bug logging."),
-        ("5", "Trish", "12516229", "Literature Review & Documentation Lead", "Hydrology ML survey (ARIMA, LSTM), academic references compilation, CA2 report drafting and user manual.")
+        ("5", "Krish", "12516229", "Literature Review & Documentation Lead", "Hydrology ML survey (ARIMA, LSTM), academic references compilation, CA2 report drafting and user manual.")
     ]
     for r_idx, row_vals in enumerate(team_data, start=1):
         for c_idx, val in enumerate(row_vals):
             t7.cell(r_idx, c_idx).text = val
             t7.cell(r_idx, c_idx).paragraphs[0].runs[0].font.size = Pt(8.0)
-            # Highlight this student in Table 7
             if stud['reg_no'] in val or stud['name'] in val:
                 t7.cell(r_idx, c_idx).paragraphs[0].runs[0].font.bold = True
 
@@ -306,11 +309,11 @@ def build_student_report(stud):
     if len(t8.columns) < 6:
         t8.add_column(Inches(1.0))
     
-    headers_t8 = ["Project Component/Task", "Mandeep (12512695)", "Kamaljit (12516046)", "Isaiah Ephraim Boye (12505587)", "Sahil (12527642)", "Trish (12516229)"]
+    headers_t8 = ["Project Component/Task", "Mantaj Singh (12512695)", "Kamaljit (12516046)", "Elijah Afriyie Boakye (12505587)", "Sahil (12527642)", "Krish (12516229)"]
     for c_idx, h in enumerate(headers_t8):
         t8.cell(0, c_idx).text = h
         t8.cell(0, c_idx).paragraphs[0].runs[0].font.bold = True
-        t8.cell(0, c_idx).paragraphs[0].runs[0].font.size = Pt(7.5)
+        t8.cell(0, c_idx).paragraphs[0].runs[0].font.size = Pt(7.0)
 
     matrix_data = [
         ("Requirement Analysis", "Contributed", "Lead", "Reviewed", "Contributed", "Contributed"),
@@ -328,7 +331,7 @@ def build_student_report(stud):
             t8.cell(r_idx, c_idx).text = val
             t8.cell(r_idx, c_idx).paragraphs[0].runs[0].font.size = Pt(8.0)
 
-    # 4. Tailored Section 7.3 Detailed Individual Contribution (Puts this student first and foremost!)
+    # 4. Tailored Section 7.3 Detailed Individual Contribution (Puts this student first!)
     for p in doc.paragraphs:
         if "Student 1: [Name and Registration Number]" in p.text:
             p.text = (
