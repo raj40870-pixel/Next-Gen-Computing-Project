@@ -9,3 +9,6 @@ venv/
 .vscode/
 scratch/
 *.zip
+*.docx
+*.pdf
+data/ca2_figures/

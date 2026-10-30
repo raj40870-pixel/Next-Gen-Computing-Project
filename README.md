@@ -1,3 +1,15 @@
+---
+title: Groundwater ST-GNN
+emoji: 💧
+colorFrom: blue
+colorTo: indigo
+sdk: streamlit
+sdk_version: 1.38.0
+app_file: app.py
+pinned: false
+license: mit
+---
+
 # Groundwater Depletion Forecasting Using Satellite InSAR and Rainfall Data Fusion: A Spatio-Temporal Graph Neural Network (ST-GNN) Approach
 
 ---

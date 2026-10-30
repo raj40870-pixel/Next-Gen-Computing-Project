@@ -1,8 +1,8 @@
 {
-  "last_sync_timestamp": "2026-10-28 15:10:34",
+  "last_sync_timestamp": "2026-10-31 00:45:10",
   "sync_status": "SUCCESS",
   "active_nodes_synced": 205,
-  "total_rainfall_monitored_mm": 128.7,
+  "total_rainfall_monitored_mm": 152.92,
   "telemetry": [
     {
       "district_id": 0,
@@ -16,11 +16,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 107 Pass #49280",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.11,
+      "live_et_mm": 3.1,
       "live_insar_delta_mm": -0.049,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 1,
@@ -34,11 +34,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49281",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.17,
+      "live_et_mm": 3.16,
       "live_insar_delta_mm": -0.084,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 2,
@@ -52,11 +52,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49282",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.73,
+      "live_et_mm": 3.16,
       "live_insar_delta_mm": -0.044,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 3,
@@ -70,11 +70,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 107 Pass #49283",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.5,
+      "live_et_mm": 3.33,
       "live_insar_delta_mm": -0.042,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 4,
@@ -88,11 +88,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 107 Pass #49284",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.36,
+      "live_et_mm": 3.53,
       "live_insar_delta_mm": -0.069,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 5,
@@ -106,11 +106,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49285",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.5,
+      "live_et_mm": 3.12,
       "live_insar_delta_mm": -0.023,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 6,
@@ -124,11 +124,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 107 Pass #49286",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.29,
+      "live_et_mm": 3.17,
       "live_insar_delta_mm": -0.014,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 7,
@@ -142,11 +142,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 107 Pass #49287",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.96,
+      "live_et_mm": 2.93,
       "live_insar_delta_mm": -0.017,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 8,
@@ -160,11 +160,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 107 Pass #49288",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.05,
+      "live_et_mm": 2.96,
       "live_insar_delta_mm": -0.021,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 9,
@@ -178,11 +178,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 107 Pass #49289",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.91,
+      "live_et_mm": 3.0,
       "live_insar_delta_mm": -0.054,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 10,
@@ -196,11 +196,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 107 Pass #49290",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.09,
+      "live_et_mm": 3.19,
       "live_insar_delta_mm": -0.057,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 11,
@@ -214,11 +214,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 107 Pass #49291",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.13,
+      "live_et_mm": 3.39,
       "live_insar_delta_mm": -0.068,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 12,
@@ -232,11 +232,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 107 Pass #49292",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.19,
+      "live_et_mm": 3.34,
       "live_insar_delta_mm": -0.075,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 13,
@@ -250,11 +250,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49293",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.51,
+      "live_et_mm": 3.23,
       "live_insar_delta_mm": -0.064,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 14,
@@ -268,11 +268,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 107 Pass #49294",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.42,
+      "live_et_mm": 3.32,
       "live_insar_delta_mm": -0.074,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 15,
@@ -286,11 +286,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49280",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.47,
+      "live_et_mm": 3.12,
       "live_insar_delta_mm": -0.034,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 16,
@@ -304,11 +304,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 107 Pass #49281",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.95,
+      "live_et_mm": 2.65,
       "live_insar_delta_mm": -0.009,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 17,
@@ -322,11 +322,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49282",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.13,
+      "live_et_mm": 3.26,
       "live_insar_delta_mm": -0.061,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 18,
@@ -340,11 +340,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 107 Pass #49283",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.99,
+      "live_et_mm": 3.04,
       "live_insar_delta_mm": -0.016,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 19,
@@ -358,11 +358,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 107 Pass #49284",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.97,
+      "live_et_mm": 3.12,
       "live_insar_delta_mm": -0.045,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 20,
@@ -376,11 +376,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 107 Pass #49285",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.26,
+      "live_et_mm": 3.21,
       "live_insar_delta_mm": -0.056,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 21,
@@ -394,11 +394,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49286",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.15,
+      "live_et_mm": 3.25,
       "live_insar_delta_mm": -0.078,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 22,
@@ -412,11 +412,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 107 Pass #49287",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.15,
+      "live_et_mm": 3.23,
       "live_insar_delta_mm": -0.062,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 23,
@@ -430,11 +430,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49288",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.01,
+      "live_et_mm": 3.3,
       "live_insar_delta_mm": -0.031,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 24,
@@ -447,12 +447,12 @@
       "field_sounder_tape_reading_m": 34.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49289",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.46,
-      "live_insar_delta_mm": -0.05,
+      "live_rainfall_mm": 0.2,
+      "live_et_mm": 3.0,
+      "live_insar_delta_mm": -0.04,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 25,
@@ -465,12 +465,12 @@
       "field_sounder_tape_reading_m": 36.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49290",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.43,
-      "live_insar_delta_mm": -0.059,
+      "live_rainfall_mm": 0.1,
+      "live_et_mm": 3.0,
+      "live_insar_delta_mm": -0.054,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 26,
@@ -484,11 +484,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49291",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.63,
+      "live_et_mm": 2.96,
       "live_insar_delta_mm": -0.067,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 27,
@@ -502,11 +502,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49292",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.46,
+      "live_et_mm": 3.11,
       "live_insar_delta_mm": -0.062,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 28,
@@ -520,11 +520,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49293",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.46,
+      "live_et_mm": 3.03,
       "live_insar_delta_mm": -0.071,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 29,
@@ -537,12 +537,12 @@
       "field_sounder_tape_reading_m": 24.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49294",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.37,
-      "live_insar_delta_mm": -0.041,
+      "live_rainfall_mm": 0.1,
+      "live_et_mm": 3.04,
+      "live_insar_delta_mm": -0.036,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 30,
@@ -555,12 +555,12 @@
       "field_sounder_tape_reading_m": 26.4,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49280",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.55,
-      "live_insar_delta_mm": -0.044,
+      "live_rainfall_mm": 0.1,
+      "live_et_mm": 3.12,
+      "live_insar_delta_mm": -0.039,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 31,
@@ -574,11 +574,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49281",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.33,
+      "live_et_mm": 3.09,
       "live_insar_delta_mm": -0.057,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 32,
@@ -592,11 +592,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49282",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.08,
+      "live_et_mm": 3.3,
       "live_insar_delta_mm": -0.07,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 33,
@@ -610,11 +610,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49283",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.06,
+      "live_et_mm": 3.22,
       "live_insar_delta_mm": -0.059,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 34,
@@ -628,11 +628,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49284",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.95,
+      "live_et_mm": 3.18,
       "live_insar_delta_mm": -0.085,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 35,
@@ -645,12 +645,12 @@
       "field_sounder_tape_reading_m": 48.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49285",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.76,
-      "live_insar_delta_mm": -0.078,
+      "live_rainfall_mm": 0.1,
+      "live_et_mm": 3.17,
+      "live_insar_delta_mm": -0.073,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 36,
@@ -664,11 +664,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49286",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.79,
+      "live_et_mm": 3.22,
       "live_insar_delta_mm": -0.029,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 37,
@@ -682,11 +682,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49287",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.34,
+      "live_et_mm": 3.04,
       "live_insar_delta_mm": -0.048,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 38,
@@ -700,11 +700,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 107 Pass #49288",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.89,
+      "live_et_mm": 2.99,
       "live_insar_delta_mm": -0.017,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 39,
@@ -718,11 +718,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49289",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.14,
+      "live_et_mm": 3.09,
       "live_insar_delta_mm": -0.052,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 40,
@@ -736,11 +736,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49290",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.7,
+      "live_et_mm": 3.2,
       "live_insar_delta_mm": -0.071,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 41,
@@ -754,11 +754,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49291",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.4,
+      "live_et_mm": 3.1,
       "live_insar_delta_mm": -0.039,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 42,
@@ -772,11 +772,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49292",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.6,
+      "live_et_mm": 3.1,
       "live_insar_delta_mm": -0.057,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 43,
@@ -789,12 +789,12 @@
       "field_sounder_tape_reading_m": 30.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49293",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.16,
-      "live_insar_delta_mm": -0.051,
+      "live_rainfall_mm": 0.1,
+      "live_et_mm": 2.98,
+      "live_insar_delta_mm": -0.046,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 44,
@@ -808,11 +808,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49294",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.91,
+      "live_et_mm": 2.76,
       "live_insar_delta_mm": -0.027,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 45,
@@ -826,11 +826,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49280",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.37,
+      "live_et_mm": 3.59,
       "live_insar_delta_mm": -0.061,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 46,
@@ -844,11 +844,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49281",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.79,
+      "live_et_mm": 3.28,
       "live_insar_delta_mm": -0.074,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 47,
@@ -862,11 +862,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49282",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 6.09,
+      "live_et_mm": 4.22,
       "live_insar_delta_mm": -0.014,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 48,
@@ -880,11 +880,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49283",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 6.07,
+      "live_et_mm": 4.49,
       "live_insar_delta_mm": -0.045,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 49,
@@ -898,11 +898,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49284",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.83,
+      "live_et_mm": 3.39,
       "live_insar_delta_mm": -0.053,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 50,
@@ -916,11 +916,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49285",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.9,
+      "live_et_mm": 3.4,
       "live_insar_delta_mm": -0.049,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 51,
@@ -934,11 +934,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49286",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.58,
+      "live_et_mm": 3.4,
       "live_insar_delta_mm": -0.034,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 52,
@@ -952,11 +952,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49287",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.31,
+      "live_et_mm": 3.46,
       "live_insar_delta_mm": -0.03,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 53,
@@ -970,11 +970,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49288",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.3,
+      "live_et_mm": 3.35,
       "live_insar_delta_mm": -0.055,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 54,
@@ -988,11 +988,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49289",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.95,
+      "live_et_mm": 3.31,
       "live_insar_delta_mm": -0.073,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 55,
@@ -1006,11 +1006,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49290",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.61,
+      "live_et_mm": 3.01,
       "live_insar_delta_mm": -0.025,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 56,
@@ -1024,11 +1024,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49291",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.64,
+      "live_et_mm": 3.1,
       "live_insar_delta_mm": -0.028,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 57,
@@ -1042,11 +1042,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49292",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.63,
+      "live_et_mm": 3.2,
       "live_insar_delta_mm": -0.082,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 58,
@@ -1060,11 +1060,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49293",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.33,
+      "live_et_mm": 4.4,
       "live_insar_delta_mm": -0.023,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 59,
@@ -1078,11 +1078,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49294",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 6.1,
+      "live_et_mm": 4.73,
       "live_insar_delta_mm": -0.066,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 60,
@@ -1096,11 +1096,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49280",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.82,
+      "live_et_mm": 2.58,
       "live_insar_delta_mm": -0.016,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 61,
@@ -1114,11 +1114,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49281",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.75,
+      "live_et_mm": 3.21,
       "live_insar_delta_mm": -0.077,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 62,
@@ -1132,11 +1132,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49282",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.92,
+      "live_et_mm": 4.23,
       "live_insar_delta_mm": -0.051,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 63,
@@ -1150,11 +1150,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49283",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.13,
+      "live_et_mm": 2.62,
       "live_insar_delta_mm": -0.023,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 64,
@@ -1168,11 +1168,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49284",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.92,
+      "live_et_mm": 3.67,
       "live_insar_delta_mm": -0.064,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 65,
@@ -1186,11 +1186,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49285",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.76,
+      "live_et_mm": 4.39,
       "live_insar_delta_mm": -0.048,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 66,
@@ -1204,11 +1204,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49286",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.49,
+      "live_et_mm": 3.49,
       "live_insar_delta_mm": -0.074,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 67,
@@ -1222,11 +1222,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49287",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 6.15,
+      "live_et_mm": 4.47,
       "live_insar_delta_mm": -0.036,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 68,
@@ -1240,11 +1240,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49288",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.19,
+      "live_et_mm": 3.24,
       "live_insar_delta_mm": -0.041,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 69,
@@ -1258,11 +1258,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49289",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.25,
+      "live_et_mm": 3.58,
       "live_insar_delta_mm": -0.026,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 70,
@@ -1276,11 +1276,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49290",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.55,
+      "live_et_mm": 3.12,
       "live_insar_delta_mm": -0.061,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 71,
@@ -1294,11 +1294,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49291",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.41,
+      "live_et_mm": 3.09,
       "live_insar_delta_mm": -0.053,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 72,
@@ -1311,12 +1311,12 @@
       "field_sounder_tape_reading_m": 16.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49292",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.16,
-      "live_insar_delta_mm": -0.021,
+      "live_rainfall_mm": 5.2,
+      "live_et_mm": 0.89,
+      "live_insar_delta_mm": 0.239,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 73,
@@ -1329,12 +1329,12 @@
       "field_sounder_tape_reading_m": 17.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49293",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.86,
-      "live_insar_delta_mm": -0.022,
+      "live_rainfall_mm": 0.6,
+      "live_et_mm": 2.71,
+      "live_insar_delta_mm": 0.008,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 74,
@@ -1348,11 +1348,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49294",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.28,
+      "live_et_mm": 2.91,
       "live_insar_delta_mm": -0.068,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 75,
@@ -1365,12 +1365,12 @@
       "field_sounder_tape_reading_m": 12.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49280",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.94,
-      "live_insar_delta_mm": -0.014,
+      "live_rainfall_mm": 7.5,
+      "live_et_mm": 1.38,
+      "live_insar_delta_mm": 0.361,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 76,
@@ -1383,12 +1383,12 @@
       "field_sounder_tape_reading_m": 29.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49281",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.91,
-      "live_insar_delta_mm": -0.045,
+      "live_rainfall_mm": 0.2,
+      "live_et_mm": 2.46,
+      "live_insar_delta_mm": -0.035,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 77,
@@ -1401,12 +1401,12 @@
       "field_sounder_tape_reading_m": 26.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49282",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.67,
-      "live_insar_delta_mm": -0.043,
+      "live_rainfall_mm": 3.8,
+      "live_et_mm": 1.52,
+      "live_insar_delta_mm": 0.147,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 78,
@@ -1419,12 +1419,12 @@
       "field_sounder_tape_reading_m": 22.1,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49283",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.53,
-      "live_insar_delta_mm": -0.031,
+      "live_rainfall_mm": 4.2,
+      "live_et_mm": 1.29,
+      "live_insar_delta_mm": 0.179,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 79,
@@ -1438,11 +1438,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49284",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.54,
+      "live_et_mm": 3.27,
       "live_insar_delta_mm": -0.057,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 80,
@@ -1455,12 +1455,12 @@
       "field_sounder_tape_reading_m": 28.6,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49285",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.22,
-      "live_insar_delta_mm": -0.051,
+      "live_rainfall_mm": 0.1,
+      "live_et_mm": 2.79,
+      "live_insar_delta_mm": -0.046,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 81,
@@ -1474,11 +1474,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49286",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.16,
+      "live_et_mm": 2.74,
       "live_insar_delta_mm": -0.033,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 82,
@@ -1492,11 +1492,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49287",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.0,
+      "live_et_mm": 2.59,
       "live_insar_delta_mm": -0.056,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 83,
@@ -1509,12 +1509,12 @@
       "field_sounder_tape_reading_m": 19.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49288",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.97,
-      "live_insar_delta_mm": -0.027,
+      "live_rainfall_mm": 0.2,
+      "live_et_mm": 1.7,
+      "live_insar_delta_mm": -0.017,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 84,
@@ -1528,11 +1528,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49289",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.98,
+      "live_et_mm": 2.59,
       "live_insar_delta_mm": -0.047,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 85,
@@ -1546,11 +1546,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49290",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.66,
+      "live_et_mm": 2.57,
       "live_insar_delta_mm": -0.024,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 86,
@@ -1564,11 +1564,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49291",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.24,
+      "live_et_mm": 2.94,
       "live_insar_delta_mm": -0.05,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 87,
@@ -1582,11 +1582,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49292",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.67,
+      "live_et_mm": 3.39,
       "live_insar_delta_mm": -0.059,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 88,
@@ -1599,12 +1599,12 @@
       "field_sounder_tape_reading_m": 24.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49293",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.12,
-      "live_insar_delta_mm": -0.038,
+      "live_rainfall_mm": 0.4,
+      "live_et_mm": 2.52,
+      "live_insar_delta_mm": -0.018,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 89,
@@ -1618,11 +1618,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49294",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.97,
+      "live_et_mm": 2.72,
       "live_insar_delta_mm": -0.019,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 90,
@@ -1635,12 +1635,12 @@
       "field_sounder_tape_reading_m": 18.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49280",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.05,
-      "live_insar_delta_mm": -0.025,
+      "live_rainfall_mm": 2.6,
+      "live_et_mm": 1.22,
+      "live_insar_delta_mm": 0.105,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 91,
@@ -1653,12 +1653,12 @@
       "field_sounder_tape_reading_m": 16.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49281",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 1.7,
-      "live_et_mm": 2.94,
-      "live_insar_delta_mm": 0.064,
+      "live_rainfall_mm": 5.8,
+      "live_et_mm": 1.07,
+      "live_insar_delta_mm": 0.269,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 92,
@@ -1671,12 +1671,12 @@
       "field_sounder_tape_reading_m": 20.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49282",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.26,
-      "live_insar_delta_mm": -0.03,
+      "live_rainfall_mm": 3.4,
+      "live_et_mm": 1.37,
+      "live_insar_delta_mm": 0.14,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 93,
@@ -1689,12 +1689,12 @@
       "field_sounder_tape_reading_m": 13.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49283",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.89,
-      "live_insar_delta_mm": -0.016,
+      "live_rainfall_mm": 11.3,
+      "live_et_mm": 1.1,
+      "live_insar_delta_mm": 0.549,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 94,
@@ -1707,12 +1707,12 @@
       "field_sounder_tape_reading_m": 11.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49284",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.82,
-      "live_insar_delta_mm": -0.013,
+      "live_rainfall_mm": 7.1,
+      "live_et_mm": 1.46,
+      "live_insar_delta_mm": 0.342,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 95,
@@ -1725,12 +1725,12 @@
       "field_sounder_tape_reading_m": 14.8,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49285",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.99,
-      "live_insar_delta_mm": -0.018,
+      "live_rainfall_mm": 2.8,
+      "live_et_mm": 3.83,
+      "live_insar_delta_mm": 0.122,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 96,
@@ -1743,12 +1743,12 @@
       "field_sounder_tape_reading_m": 26.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49286",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.2,
-      "live_et_mm": 4.65,
-      "live_insar_delta_mm": -0.037,
+      "live_rainfall_mm": 3.1,
+      "live_et_mm": 3.71,
+      "live_insar_delta_mm": 0.108,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 97,
@@ -1761,12 +1761,12 @@
       "field_sounder_tape_reading_m": 24.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49287",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.6,
-      "live_et_mm": 5.33,
-      "live_insar_delta_mm": -0.011,
+      "live_rainfall_mm": 1.1,
+      "live_et_mm": 4.29,
+      "live_insar_delta_mm": 0.014,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 98,
@@ -1779,12 +1779,12 @@
       "field_sounder_tape_reading_m": 27.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49288",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.39,
-      "live_insar_delta_mm": -0.051,
+      "live_rainfall_mm": 10.1,
+      "live_et_mm": 4.15,
+      "live_insar_delta_mm": 0.454,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 99,
@@ -1798,11 +1798,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49289",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.87,
+      "live_et_mm": 3.61,
       "live_insar_delta_mm": -0.04,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 100,
@@ -1815,12 +1815,12 @@
       "field_sounder_tape_reading_m": 16.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49290",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.44,
-      "live_insar_delta_mm": -0.022,
+      "live_rainfall_mm": 2.3,
+      "live_et_mm": 4.1,
+      "live_insar_delta_mm": 0.093,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 101,
@@ -1833,12 +1833,12 @@
       "field_sounder_tape_reading_m": 15.2,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49291",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.1,
-      "live_et_mm": 4.23,
-      "live_insar_delta_mm": -0.015,
+      "live_rainfall_mm": 0.4,
+      "live_et_mm": 3.61,
+      "live_insar_delta_mm": 0.0,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 102,
@@ -1851,12 +1851,12 @@
       "field_sounder_tape_reading_m": 11.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49292",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.0,
-      "live_insar_delta_mm": -0.012,
+      "live_rainfall_mm": 0.1,
+      "live_et_mm": 4.33,
+      "live_insar_delta_mm": -0.007,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 103,
@@ -1869,12 +1869,12 @@
       "field_sounder_tape_reading_m": 16.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49293",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.58,
-      "live_insar_delta_mm": -0.021,
+      "live_rainfall_mm": 0.5,
+      "live_et_mm": 4.2,
+      "live_insar_delta_mm": 0.004,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 104,
@@ -1888,11 +1888,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49294",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.08,
+      "live_et_mm": 4.63,
       "live_insar_delta_mm": -0.037,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 105,
@@ -1906,11 +1906,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49280",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.53,
+      "live_et_mm": 4.64,
       "live_insar_delta_mm": -0.052,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 106,
@@ -1923,12 +1923,12 @@
       "field_sounder_tape_reading_m": 18.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49281",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.9,
-      "live_et_mm": 4.09,
-      "live_insar_delta_mm": 0.016,
+      "live_rainfall_mm": 2.7,
+      "live_et_mm": 4.26,
+      "live_insar_delta_mm": 0.106,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 107,
@@ -1941,12 +1941,12 @@
       "field_sounder_tape_reading_m": 25.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49282",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.91,
-      "live_insar_delta_mm": -0.044,
+      "live_rainfall_mm": 0.1,
+      "live_et_mm": 3.94,
+      "live_insar_delta_mm": -0.039,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 108,
@@ -1959,12 +1959,12 @@
       "field_sounder_tape_reading_m": 23.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49283",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 1.3,
-      "live_et_mm": 4.45,
-      "live_insar_delta_mm": 0.024,
+      "live_rainfall_mm": 0.0,
+      "live_et_mm": 4.27,
+      "live_insar_delta_mm": -0.041,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 109,
@@ -1977,12 +1977,12 @@
       "field_sounder_tape_reading_m": 13.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49284",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 1.2,
-      "live_et_mm": 3.69,
-      "live_insar_delta_mm": 0.045,
+      "live_rainfall_mm": 0.0,
+      "live_et_mm": 3.9,
+      "live_insar_delta_mm": -0.015,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 110,
@@ -1995,12 +1995,12 @@
       "field_sounder_tape_reading_m": 19.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49285",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 1.9,
-      "live_et_mm": 3.54,
-      "live_insar_delta_mm": 0.065,
+      "live_rainfall_mm": 0.4,
+      "live_et_mm": 3.63,
+      "live_insar_delta_mm": -0.01,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 111,
@@ -2013,12 +2013,12 @@
       "field_sounder_tape_reading_m": 26.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49286",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 1.3,
-      "live_et_mm": 4.38,
-      "live_insar_delta_mm": 0.019,
+      "live_rainfall_mm": 0.1,
+      "live_et_mm": 4.01,
+      "live_insar_delta_mm": -0.041,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 112,
@@ -2031,12 +2031,12 @@
       "field_sounder_tape_reading_m": 24.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49287",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.2,
-      "live_et_mm": 5.82,
-      "live_insar_delta_mm": -0.032,
+      "live_rainfall_mm": 0.1,
+      "live_et_mm": 4.19,
+      "live_insar_delta_mm": -0.037,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 113,
@@ -2049,12 +2049,12 @@
       "field_sounder_tape_reading_m": 21.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49288",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 2.1,
-      "live_et_mm": 4.37,
-      "live_insar_delta_mm": 0.071,
+      "live_rainfall_mm": 0.5,
+      "live_et_mm": 4.54,
+      "live_insar_delta_mm": -0.009,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 114,
@@ -2067,12 +2067,12 @@
       "field_sounder_tape_reading_m": 8.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49289",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 6.32,
-      "live_insar_delta_mm": -0.01,
+      "live_rainfall_mm": 0.1,
+      "live_et_mm": 3.85,
+      "live_insar_delta_mm": -0.005,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 115,
@@ -2086,11 +2086,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49290",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 6.26,
+      "live_et_mm": 4.7,
       "live_insar_delta_mm": -0.067,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 116,
@@ -2103,12 +2103,12 @@
       "field_sounder_tape_reading_m": 52.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49291",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 6.7,
-      "live_insar_delta_mm": -0.077,
+      "live_rainfall_mm": 0.1,
+      "live_et_mm": 4.31,
+      "live_insar_delta_mm": -0.072,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 117,
@@ -2122,11 +2122,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49292",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 6.36,
+      "live_et_mm": 4.44,
       "live_insar_delta_mm": -0.014,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 118,
@@ -2140,11 +2140,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49293",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 6.93,
+      "live_et_mm": 4.98,
       "live_insar_delta_mm": -0.044,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 119,
@@ -2157,12 +2157,12 @@
       "field_sounder_tape_reading_m": 32.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49294",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 6.1,
-      "live_insar_delta_mm": -0.051,
+      "live_rainfall_mm": 0.1,
+      "live_et_mm": 4.31,
+      "live_insar_delta_mm": -0.046,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 120,
@@ -2176,11 +2176,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49280",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 6.95,
+      "live_et_mm": 4.78,
       "live_insar_delta_mm": -0.033,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 121,
@@ -2193,12 +2193,12 @@
       "field_sounder_tape_reading_m": 24.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49281",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.66,
-      "live_insar_delta_mm": -0.037,
+      "live_rainfall_mm": 0.3,
+      "live_et_mm": 3.93,
+      "live_insar_delta_mm": -0.022,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 122,
@@ -2211,12 +2211,12 @@
       "field_sounder_tape_reading_m": 18.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49282",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 6.47,
-      "live_insar_delta_mm": -0.023,
+      "live_rainfall_mm": 6.3,
+      "live_et_mm": 4.34,
+      "live_insar_delta_mm": 0.292,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 123,
@@ -2230,11 +2230,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49283",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 6.22,
+      "live_et_mm": 4.63,
       "live_insar_delta_mm": -0.063,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 124,
@@ -2248,11 +2248,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49284",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 6.77,
+      "live_et_mm": 4.99,
       "live_insar_delta_mm": -0.048,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 125,
@@ -2266,11 +2266,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49285",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 6.09,
+      "live_et_mm": 4.64,
       "live_insar_delta_mm": -0.085,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 126,
@@ -2284,11 +2284,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49286",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.64,
+      "live_et_mm": 4.06,
       "live_insar_delta_mm": -0.06,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 127,
@@ -2302,11 +2302,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49287",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.68,
+      "live_et_mm": 4.78,
       "live_insar_delta_mm": -0.044,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 128,
@@ -2320,11 +2320,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49288",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 6.38,
+      "live_et_mm": 4.51,
       "live_insar_delta_mm": -0.018,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 129,
@@ -2338,11 +2338,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49289",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 6.37,
+      "live_et_mm": 4.39,
       "live_insar_delta_mm": -0.075,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 130,
@@ -2356,11 +2356,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49290",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.22,
+      "live_et_mm": 3.44,
       "live_insar_delta_mm": -0.039,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 131,
@@ -2373,12 +2373,12 @@
       "field_sounder_tape_reading_m": 16.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49291",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.5,
-      "live_et_mm": 4.95,
-      "live_insar_delta_mm": 0.006,
+      "live_rainfall_mm": 0.0,
+      "live_et_mm": 2.57,
+      "live_insar_delta_mm": -0.019,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 132,
@@ -2391,12 +2391,12 @@
       "field_sounder_tape_reading_m": 14.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49292",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 5.1,
-      "live_et_mm": 3.64,
-      "live_insar_delta_mm": 0.24,
+      "live_rainfall_mm": 0.0,
+      "live_et_mm": 1.94,
+      "live_insar_delta_mm": -0.015,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 133,
@@ -2409,12 +2409,12 @@
       "field_sounder_tape_reading_m": 29.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49293",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.88,
-      "live_insar_delta_mm": -0.044,
+      "live_rainfall_mm": 0.6,
+      "live_et_mm": 2.79,
+      "live_insar_delta_mm": -0.014,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 134,
@@ -2428,11 +2428,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49294",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.49,
+      "live_et_mm": 2.89,
       "live_insar_delta_mm": -0.049,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 135,
@@ -2445,12 +2445,12 @@
       "field_sounder_tape_reading_m": 18.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49280",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.7,
-      "live_et_mm": 4.51,
-      "live_insar_delta_mm": 0.013,
+      "live_rainfall_mm": 0.3,
+      "live_et_mm": 2.27,
+      "live_insar_delta_mm": -0.007,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 136,
@@ -2464,11 +2464,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49281",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.07,
+      "live_et_mm": 2.92,
       "live_insar_delta_mm": -0.053,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 137,
@@ -2481,12 +2481,12 @@
       "field_sounder_tape_reading_m": 20.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49282",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 1.1,
-      "live_et_mm": 3.27,
-      "live_insar_delta_mm": 0.028,
+      "live_rainfall_mm": 0.3,
+      "live_et_mm": 2.46,
+      "live_insar_delta_mm": -0.012,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 138,
@@ -2500,11 +2500,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49283",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 6.09,
+      "live_et_mm": 4.01,
       "live_insar_delta_mm": -0.047,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 139,
@@ -2517,12 +2517,12 @@
       "field_sounder_tape_reading_m": 16.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49284",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.5,
-      "live_et_mm": 3.26,
-      "live_insar_delta_mm": 0.006,
+      "live_rainfall_mm": 0.3,
+      "live_et_mm": 2.13,
+      "live_insar_delta_mm": -0.004,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 140,
@@ -2536,11 +2536,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49285",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.08,
+      "live_et_mm": 3.3,
       "live_insar_delta_mm": -0.037,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 141,
@@ -2554,11 +2554,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49286",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.07,
+      "live_et_mm": 2.65,
       "live_insar_delta_mm": -0.013,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 142,
@@ -2571,12 +2571,12 @@
       "field_sounder_tape_reading_m": 24.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49287",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.24,
-      "live_insar_delta_mm": -0.034,
+      "live_rainfall_mm": 0.2,
+      "live_et_mm": 2.7,
+      "live_insar_delta_mm": -0.024,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 143,
@@ -2589,12 +2589,12 @@
       "field_sounder_tape_reading_m": 21.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49288",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.1,
-      "live_et_mm": 4.61,
-      "live_insar_delta_mm": -0.025,
+      "live_rainfall_mm": 0.0,
+      "live_et_mm": 2.55,
+      "live_insar_delta_mm": -0.03,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 144,
@@ -2607,12 +2607,12 @@
       "field_sounder_tape_reading_m": 17.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49289",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.3,
-      "live_et_mm": 3.55,
-      "live_insar_delta_mm": -0.007,
+      "live_rainfall_mm": 0.5,
+      "live_et_mm": 3.21,
+      "live_insar_delta_mm": 0.003,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 145,
@@ -2625,12 +2625,12 @@
       "field_sounder_tape_reading_m": 48.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49290",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.13,
-      "live_insar_delta_mm": -0.065,
+      "live_rainfall_mm": 0.1,
+      "live_et_mm": 5.19,
+      "live_insar_delta_mm": -0.06,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 146,
@@ -2644,11 +2644,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49291",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.61,
+      "live_et_mm": 4.79,
       "live_insar_delta_mm": -0.071,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 147,
@@ -2661,12 +2661,12 @@
       "field_sounder_tape_reading_m": 62.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49292",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.67,
-      "live_insar_delta_mm": -0.073,
+      "live_rainfall_mm": 0.1,
+      "live_et_mm": 4.65,
+      "live_insar_delta_mm": -0.068,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 148,
@@ -2680,11 +2680,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49293",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.9,
+      "live_et_mm": 4.82,
       "live_insar_delta_mm": -0.023,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 149,
@@ -2698,11 +2698,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49294",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.14,
+      "live_et_mm": 4.26,
       "live_insar_delta_mm": -0.033,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 150,
@@ -2715,12 +2715,12 @@
       "field_sounder_tape_reading_m": 28.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49280",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.88,
-      "live_insar_delta_mm": -0.045,
+      "live_rainfall_mm": 2.2,
+      "live_et_mm": 4.34,
+      "live_insar_delta_mm": 0.065,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 151,
@@ -2734,11 +2734,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49281",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.31,
+      "live_et_mm": 4.53,
       "live_insar_delta_mm": -0.036,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 152,
@@ -2752,11 +2752,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49282",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.3,
+      "live_et_mm": 5.45,
       "live_insar_delta_mm": -0.056,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 153,
@@ -2769,12 +2769,12 @@
       "field_sounder_tape_reading_m": 31.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49283",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.71,
-      "live_insar_delta_mm": -0.049,
+      "live_rainfall_mm": 1.2,
+      "live_et_mm": 4.68,
+      "live_insar_delta_mm": 0.011,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 154,
@@ -2788,11 +2788,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49284",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.46,
+      "live_et_mm": 4.67,
       "live_insar_delta_mm": -0.012,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 155,
@@ -2806,11 +2806,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49285",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.13,
+      "live_et_mm": 4.66,
       "live_insar_delta_mm": -0.062,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 156,
@@ -2824,11 +2824,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49286",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.75,
+      "live_et_mm": 4.56,
       "live_insar_delta_mm": -0.041,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 157,
@@ -2841,12 +2841,12 @@
       "field_sounder_tape_reading_m": 29.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49287",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.54,
-      "live_insar_delta_mm": -0.047,
+      "live_rainfall_mm": 0.2,
+      "live_et_mm": 5.2,
+      "live_insar_delta_mm": -0.037,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 158,
@@ -2859,12 +2859,12 @@
       "field_sounder_tape_reading_m": 22.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49288",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.6,
-      "live_et_mm": 3.42,
-      "live_insar_delta_mm": -0.001,
+      "live_rainfall_mm": 1.0,
+      "live_et_mm": 3.98,
+      "live_insar_delta_mm": 0.019,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 159,
@@ -2878,11 +2878,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49289",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.75,
+      "live_et_mm": 4.49,
       "live_insar_delta_mm": -0.018,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 160,
@@ -2895,12 +2895,12 @@
       "field_sounder_tape_reading_m": 12.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49290",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.6,
-      "live_insar_delta_mm": -0.025,
+      "live_rainfall_mm": 0.2,
+      "live_et_mm": 4.32,
+      "live_insar_delta_mm": -0.015,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 161,
@@ -2914,11 +2914,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49291",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.66,
+      "live_et_mm": 4.9,
       "live_insar_delta_mm": -0.053,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 162,
@@ -2931,12 +2931,12 @@
       "field_sounder_tape_reading_m": 22.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49292",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.1,
-      "live_et_mm": 4.82,
-      "live_insar_delta_mm": -0.029,
+      "live_rainfall_mm": 0.0,
+      "live_et_mm": 4.96,
+      "live_insar_delta_mm": -0.034,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 163,
@@ -2949,12 +2949,12 @@
       "field_sounder_tape_reading_m": 18.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49293",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.07,
-      "live_insar_delta_mm": -0.027,
+      "live_rainfall_mm": 0.1,
+      "live_et_mm": 4.65,
+      "live_insar_delta_mm": -0.022,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 164,
@@ -2967,12 +2967,12 @@
       "field_sounder_tape_reading_m": 38.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49294",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 4.39,
-      "live_insar_delta_mm": -0.06,
+      "live_rainfall_mm": 0.2,
+      "live_et_mm": 4.87,
+      "live_insar_delta_mm": -0.05,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 165,
@@ -2985,12 +2985,12 @@
       "field_sounder_tape_reading_m": 16.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49280",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.07,
-      "live_insar_delta_mm": -0.021,
+      "live_rainfall_mm": 1.1,
+      "live_et_mm": 5.13,
+      "live_insar_delta_mm": 0.034,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 166,
@@ -3003,12 +3003,12 @@
       "field_sounder_tape_reading_m": 34.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49281",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.1,
-      "live_et_mm": 5.21,
-      "live_insar_delta_mm": -0.046,
+      "live_rainfall_mm": 0.0,
+      "live_et_mm": 4.98,
+      "live_insar_delta_mm": -0.051,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 167,
@@ -3021,12 +3021,12 @@
       "field_sounder_tape_reading_m": 29.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49282",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.49,
-      "live_insar_delta_mm": -0.044,
+      "live_rainfall_mm": 0.9,
+      "live_et_mm": 4.33,
+      "live_insar_delta_mm": 0.001,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 168,
@@ -3039,12 +3039,12 @@
       "field_sounder_tape_reading_m": 26.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49283",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.19,
-      "live_insar_delta_mm": -0.038,
+      "live_rainfall_mm": 0.4,
+      "live_et_mm": 4.8,
+      "live_insar_delta_mm": -0.018,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 169,
@@ -3058,11 +3058,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49284",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.4,
-      "live_et_mm": 5.13,
+      "live_et_mm": 4.64,
       "live_insar_delta_mm": 0.001,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 170,
@@ -3076,11 +3076,11 @@
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49285",
       "radar_frequency": "5.405 GHz (C-band SAR)",
       "live_rainfall_mm": 0.1,
-      "live_et_mm": 4.7,
+      "live_et_mm": 4.88,
       "live_insar_delta_mm": -0.043,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 171,
@@ -3093,12 +3093,12 @@
       "field_sounder_tape_reading_m": 11.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49286",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.03,
-      "live_insar_delta_mm": -0.011,
+      "live_rainfall_mm": 1.2,
+      "live_et_mm": 4.57,
+      "live_insar_delta_mm": 0.049,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 172,
@@ -3111,12 +3111,12 @@
       "field_sounder_tape_reading_m": 27.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49287",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.81,
-      "live_insar_delta_mm": -0.041,
+      "live_rainfall_mm": 1.2,
+      "live_et_mm": 4.1,
+      "live_insar_delta_mm": 0.019,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 173,
@@ -3129,12 +3129,12 @@
       "field_sounder_tape_reading_m": 15.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49288",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.39,
-      "live_insar_delta_mm": -0.021,
+      "live_rainfall_mm": 0.8,
+      "live_et_mm": 4.43,
+      "live_insar_delta_mm": 0.019,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 174,
@@ -3147,12 +3147,12 @@
       "field_sounder_tape_reading_m": 20.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49289",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 5.77,
-      "live_insar_delta_mm": -0.03,
+      "live_rainfall_mm": 2.4,
+      "live_et_mm": 3.98,
+      "live_insar_delta_mm": 0.09,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 175,
@@ -3165,12 +3165,12 @@
       "field_sounder_tape_reading_m": 11.8,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49290",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.58,
-      "live_insar_delta_mm": -0.013,
+      "live_rainfall_mm": 4.0,
+      "live_et_mm": 2.09,
+      "live_insar_delta_mm": 0.187,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 176,
@@ -3183,12 +3183,12 @@
       "field_sounder_tape_reading_m": 20.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49291",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 4.9,
-      "live_et_mm": 1.87,
-      "live_insar_delta_mm": 0.214,
+      "live_rainfall_mm": 3.1,
+      "live_et_mm": 2.32,
+      "live_insar_delta_mm": 0.124,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 177,
@@ -3201,12 +3201,12 @@
       "field_sounder_tape_reading_m": 13.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49292",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 1.1,
-      "live_et_mm": 2.25,
-      "live_insar_delta_mm": 0.041,
+      "live_rainfall_mm": 2.0,
+      "live_et_mm": 2.14,
+      "live_insar_delta_mm": 0.086,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 178,
@@ -3219,12 +3219,12 @@
       "field_sounder_tape_reading_m": 9.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49293",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.97,
-      "live_insar_delta_mm": -0.01,
+      "live_rainfall_mm": 2.8,
+      "live_et_mm": 1.88,
+      "live_insar_delta_mm": 0.13,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 179,
@@ -3237,12 +3237,12 @@
       "field_sounder_tape_reading_m": 8.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49294",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.7,
-      "live_et_mm": 2.63,
-      "live_insar_delta_mm": 0.028,
+      "live_rainfall_mm": 0.1,
+      "live_et_mm": 2.44,
+      "live_insar_delta_mm": -0.002,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 180,
@@ -3255,12 +3255,12 @@
       "field_sounder_tape_reading_m": 9.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49280",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.91,
-      "live_insar_delta_mm": -0.009,
+      "live_rainfall_mm": 4.3,
+      "live_et_mm": 1.88,
+      "live_insar_delta_mm": 0.206,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 181,
@@ -3273,12 +3273,12 @@
       "field_sounder_tape_reading_m": 19.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49281",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 3.4,
-      "live_et_mm": 1.94,
-      "live_insar_delta_mm": 0.143,
+      "live_rainfall_mm": 6.2,
+      "live_et_mm": 2.0,
+      "live_insar_delta_mm": 0.283,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 182,
@@ -3291,12 +3291,12 @@
       "field_sounder_tape_reading_m": 12.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49282",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 2.2,
-      "live_insar_delta_mm": -0.014,
+      "live_rainfall_mm": 1.6,
+      "live_et_mm": 1.87,
+      "live_insar_delta_mm": 0.066,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 183,
@@ -3309,12 +3309,12 @@
       "field_sounder_tape_reading_m": 10.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49283",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 2.1,
-      "live_et_mm": 2.46,
-      "live_insar_delta_mm": 0.094,
+      "live_rainfall_mm": 5.4,
+      "live_et_mm": 1.77,
+      "live_insar_delta_mm": 0.259,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 184,
@@ -3327,12 +3327,12 @@
       "field_sounder_tape_reading_m": 7.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49284",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.6,
-      "live_et_mm": 2.45,
-      "live_insar_delta_mm": 0.024,
+      "live_rainfall_mm": 1.6,
+      "live_et_mm": 2.43,
+      "live_insar_delta_mm": 0.074,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 185,
@@ -3345,12 +3345,12 @@
       "field_sounder_tape_reading_m": 26.2,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49285",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.4,
-      "live_et_mm": 2.85,
-      "live_insar_delta_mm": -0.023,
+      "live_rainfall_mm": 3.4,
+      "live_et_mm": 3.7,
+      "live_insar_delta_mm": 0.127,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 186,
@@ -3363,12 +3363,12 @@
       "field_sounder_tape_reading_m": 21.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49286",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 11.8,
-      "live_et_mm": 2.18,
-      "live_insar_delta_mm": 0.557,
+      "live_rainfall_mm": 0.8,
+      "live_et_mm": 3.33,
+      "live_insar_delta_mm": 0.007,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 187,
@@ -3381,12 +3381,12 @@
       "field_sounder_tape_reading_m": 25.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49287",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 4.4,
-      "live_et_mm": 2.91,
-      "live_insar_delta_mm": 0.18,
+      "live_rainfall_mm": 0.5,
+      "live_et_mm": 4.2,
+      "live_insar_delta_mm": -0.015,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 188,
@@ -3399,12 +3399,12 @@
       "field_sounder_tape_reading_m": 23.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49288",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 1.5,
-      "live_et_mm": 3.0,
-      "live_insar_delta_mm": 0.038,
+      "live_rainfall_mm": 1.09,
+      "live_et_mm": 2.98,
+      "live_insar_delta_mm": 0.017,
       "satellite_status": "ONLINE (Connected)",
-      "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "data_source": "Offline Calibrated Satellite Stream",
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 189,
@@ -3417,12 +3417,12 @@
       "field_sounder_tape_reading_m": 18.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49289",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 4.4,
-      "live_et_mm": 2.45,
-      "live_insar_delta_mm": 0.195,
+      "live_rainfall_mm": 0.1,
+      "live_et_mm": 3.69,
+      "live_insar_delta_mm": -0.02,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 190,
@@ -3435,12 +3435,12 @@
       "field_sounder_tape_reading_m": 17.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49290",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 31.2,
-      "live_et_mm": 1.81,
-      "live_insar_delta_mm": 1.537,
+      "live_rainfall_mm": 0.6,
+      "live_et_mm": 3.31,
+      "live_insar_delta_mm": 0.007,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 191,
@@ -3453,12 +3453,12 @@
       "field_sounder_tape_reading_m": 29.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49291",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
-      "live_et_mm": 3.77,
-      "live_insar_delta_mm": -0.048,
+      "live_rainfall_mm": 1.4,
+      "live_et_mm": 4.22,
+      "live_insar_delta_mm": 0.022,
       "satellite_status": "ONLINE (Connected)",
       "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 192,
@@ -3471,12 +3471,12 @@
       "field_sounder_tape_reading_m": 28.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49292",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 7.0,
-      "live_et_mm": 2.51,
-      "live_insar_delta_mm": 0.306,
+      "live_rainfall_mm": 0.32,
+      "live_et_mm": 3.19,
+      "live_insar_delta_mm": -0.028,
       "satellite_status": "ONLINE (Connected)",
-      "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "data_source": "Offline Calibrated Satellite Stream",
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 193,
@@ -3489,12 +3489,12 @@
       "field_sounder_tape_reading_m": 14.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49293",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 1.1,
-      "live_et_mm": 3.17,
-      "live_insar_delta_mm": 0.039,
+      "live_rainfall_mm": 0.11,
+      "live_et_mm": 3.28,
+      "live_insar_delta_mm": -0.011,
       "satellite_status": "ONLINE (Connected)",
-      "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "data_source": "Offline Calibrated Satellite Stream",
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 194,
@@ -3507,12 +3507,12 @@
       "field_sounder_tape_reading_m": 27.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49294",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 1.4,
-      "live_et_mm": 2.76,
-      "live_insar_delta_mm": 0.029,
+      "live_rainfall_mm": 1.15,
+      "live_et_mm": 3.5,
+      "live_insar_delta_mm": 0.017,
       "satellite_status": "ONLINE (Connected)",
-      "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "data_source": "Offline Calibrated Satellite Stream",
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 195,
@@ -3525,12 +3525,12 @@
       "field_sounder_tape_reading_m": 9.4,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49280",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 2.0,
-      "live_et_mm": 2.75,
-      "live_insar_delta_mm": 0.083,
+      "live_rainfall_mm": 0.14,
+      "live_et_mm": 3.08,
+      "live_insar_delta_mm": -0.01,
       "satellite_status": "ONLINE (Connected)",
-      "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "data_source": "Offline Calibrated Satellite Stream",
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 196,
@@ -3543,12 +3543,12 @@
       "field_sounder_tape_reading_m": 10.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49281",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 2.7,
-      "live_et_mm": 2.61,
-      "live_insar_delta_mm": 0.117,
+      "live_rainfall_mm": 0.33,
+      "live_et_mm": 3.42,
+      "live_insar_delta_mm": -0.001,
       "satellite_status": "ONLINE (Connected)",
-      "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "data_source": "Offline Calibrated Satellite Stream",
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 197,
@@ -3561,12 +3561,12 @@
       "field_sounder_tape_reading_m": 11.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49282",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 1.2,
-      "live_et_mm": 2.81,
-      "live_insar_delta_mm": 0.041,
+      "live_rainfall_mm": 0.97,
+      "live_et_mm": 2.54,
+      "live_insar_delta_mm": 0.029,
       "satellite_status": "ONLINE (Connected)",
-      "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "data_source": "Offline Calibrated Satellite Stream",
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 198,
@@ -3579,12 +3579,12 @@
       "field_sounder_tape_reading_m": 7.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49283",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.9,
-      "live_et_mm": 2.57,
-      "live_insar_delta_mm": 0.034,
+      "live_rainfall_mm": 0.04,
+      "live_et_mm": 3.0,
+      "live_insar_delta_mm": -0.009,
       "satellite_status": "ONLINE (Connected)",
-      "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "data_source": "Offline Calibrated Satellite Stream",
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 199,
@@ -3597,12 +3597,12 @@
       "field_sounder_tape_reading_m": 12.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49284",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 1.2,
-      "live_et_mm": 2.8,
-      "live_insar_delta_mm": 0.041,
+      "live_rainfall_mm": 0.73,
+      "live_et_mm": 3.15,
+      "live_insar_delta_mm": 0.018,
       "satellite_status": "ONLINE (Connected)",
-      "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "data_source": "Offline Calibrated Satellite Stream",
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 200,
@@ -3615,12 +3615,12 @@
       "field_sounder_tape_reading_m": 16.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49285",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 2.7,
-      "live_et_mm": 2.26,
-      "live_insar_delta_mm": 0.112,
+      "live_rainfall_mm": 1.52,
+      "live_et_mm": 2.6,
+      "live_insar_delta_mm": 0.053,
       "satellite_status": "ONLINE (Connected)",
-      "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "data_source": "Offline Calibrated Satellite Stream",
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 201,
@@ -3633,12 +3633,12 @@
       "field_sounder_tape_reading_m": 13.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49286",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 7.1,
-      "live_et_mm": 2.31,
-      "live_insar_delta_mm": 0.335,
+      "live_rainfall_mm": 1.84,
+      "live_et_mm": 2.52,
+      "live_insar_delta_mm": 0.072,
       "satellite_status": "ONLINE (Connected)",
-      "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "data_source": "Offline Calibrated Satellite Stream",
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 202,
@@ -3651,12 +3651,12 @@
       "field_sounder_tape_reading_m": 13.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49287",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 8.7,
-      "live_et_mm": 2.74,
-      "live_insar_delta_mm": 0.413,
+      "live_rainfall_mm": 3.31,
+      "live_et_mm": 2.85,
+      "live_insar_delta_mm": 0.144,
       "satellite_status": "ONLINE (Connected)",
-      "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "data_source": "Offline Calibrated Satellite Stream",
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 203,
@@ -3669,12 +3669,12 @@
       "field_sounder_tape_reading_m": 11.0,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49288",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 5.1,
-      "live_et_mm": 2.65,
-      "live_insar_delta_mm": 0.239,
+      "live_rainfall_mm": 1.14,
+      "live_et_mm": 3.6,
+      "live_insar_delta_mm": 0.041,
       "satellite_status": "ONLINE (Connected)",
-      "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "data_source": "Offline Calibrated Satellite Stream",
+      "last_observation_date": "2026-10-31"
     },
     {
       "district_id": 204,
@@ -3687,17 +3687,17 @@
       "field_sounder_tape_reading_m": 6.5,
       "sentinel1_orbit_pass": "S1-C-band Track 136 Pass #49289",
       "radar_frequency": "5.405 GHz (C-band SAR)",
-      "live_rainfall_mm": 0.0,
+      "live_rainfall_mm": 2.03,
       "live_et_mm": 3.21,
-      "live_insar_delta_mm": -0.005,
+      "live_insar_delta_mm": 0.096,
       "satellite_status": "ONLINE (Connected)",
-      "data_source": "Open-Meteo Satellite API",
-      "last_observation_date": "2026-10-28"
+      "data_source": "Offline Calibrated Satellite Stream",
+      "last_observation_date": "2026-10-31"
     }
   ],
   "prediction_summary": {
     "forecast_horizon_days": 30,
-    "mean_depletion_change_m": 0.716,
+    "mean_depletion_change_m": 0.718,
     "districts_predicted_count": 205,
     "critical_districts": [
       "Amritsar",
