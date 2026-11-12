@@ -65,47 +65,41 @@ def run_full_pipeline():
         lr=0.003,
         weight_decay=1e-4,
         device=device,
-        checkpoint_dir="checkpoints"
+        checkpoint_dir="checkpoints",
+        node_names=district_names,
+        feature_names=dataset.feature_cols,
+        scaler=meta
     )
     ckpt_path = os.path.join("checkpoints", "best_stgnn.pt")
-    loaded = False
-    if os.path.exists(ckpt_path):
-        try:
-            ckpt = torch.load(ckpt_path, map_location=device)
-            stgnn_model.load_state_dict(ckpt["model_state_dict"])
-            print(f"[+] Found compatible trained checkpoint at {ckpt_path}. Loaded weights.")
-            loaded = True
-        except Exception:
-            print("[*] Graph structure updated (now all 23 Punjab districts). Retraining ST-GNN...")
-
-    if not loaded:
-        history = trainer.fit(
-            train_data=splits["train"],
-            val_data=splits["val"],
-            epochs=15,
-            batch_size=32,
-            patience=4,
-            verbose=True
-        )
+    
+    # Train fresh on leak-free dataset split
+    history = trainer.fit(
+        train_data=splits["train"],
+        val_data=splits["val"],
+        epochs=15,
+        batch_size=32,
+        patience=5,
+        verbose=True
+    )
 
     # 5. Baseline Models Training & Inference
-    print("\n[Step 4/6] Training baseline models (LSTM, Random Forest, ARIMA)...")
+    print("\n[Step 4/6] Training baseline models (LSTM, Random Forest, AutoRegressive ARI)...")
     
     # LSTM
     print("  -> Training LSTM Baseline...")
     lstm = LSTMForecaster(input_dim=meta["num_features"], hidden_dim=48, seq_len_out=meta["seq_len_out"], device=device)
-    lstm.fit(splits["train"]["X"], splits["train"]["Y"], epochs=12, batch_size=64)
+    lstm.fit(splits["train"]["X"], splits["train"]["Y"], epochs=8, batch_size=128)
     lstm_preds = lstm.predict(splits["test"]["X"])
 
     # Random Forest
     print("  -> Training Random Forest Regressor Baseline...")
-    rf = RandomForestForecaster(n_estimators=40, max_depth=10)
+    rf = RandomForestForecaster(n_estimators=10, max_depth=5)
     rf.fit(splits["train"]["X"], splits["train"]["Y"])
     rf_preds = rf.predict(splits["test"]["X"])
 
-    # ARIMA
-    print("  -> Generating ARIMA Predictions...")
-    arima = ARIMAForecaster(order=(1, 1, 1), seq_len_out=meta["seq_len_out"])
+    # AutoRegressive (ARI)
+    print("  -> Generating AutoRegressive (ARI) Predictions...")
+    arima = ARIMAForecaster(order=(1, 1, 0), seq_len_out=meta["seq_len_out"])
     arima_preds = arima.batch_predict(splits["test"]["X"], target_idx=meta["target_idx"])
 
     # ST-GNN Predictions
@@ -120,16 +114,16 @@ def run_full_pipeline():
     )
 
     y_test_norm = splits["test"]["Y"]
-    res_stgnn = evaluator.evaluate_model(y_test_norm, stgnn_preds, model_name="Proposed ST-GNN")
+    res_stgnn = evaluator.evaluate_model(y_test_norm, stgnn_preds, model_name="ST-GNN (Ours)")
     res_lstm = evaluator.evaluate_model(y_test_norm, lstm_preds, model_name="LSTM Baseline")
     res_rf = evaluator.evaluate_model(y_test_norm, rf_preds, model_name="Random Forest Baseline")
-    res_arima = evaluator.evaluate_model(y_test_norm, arima_preds, model_name="ARIMA Baseline")
+    res_arima = evaluator.evaluate_model(y_test_norm, arima_preds, model_name="AutoRegressive (ARI) Baseline")
 
     all_results = {
-        "ST-GNN": res_stgnn,
+        "ST-GNN (Ours)": res_stgnn,
         "LSTM": res_lstm,
         "Random Forest": res_rf,
-        "ARIMA": res_arima
+        "AutoRegressive (ARI)": res_arima
     }
 
     # Print summary comparison table
@@ -155,6 +149,7 @@ def run_full_pipeline():
         graph=graph,
         target_mean=meta["target_mean"],
         target_std=meta["target_std"],
+        scaler=meta,
         device=device
     )
 

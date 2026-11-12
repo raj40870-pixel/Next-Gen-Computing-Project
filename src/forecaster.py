@@ -9,29 +9,41 @@ import json
 import numpy as np
 import pandas as pd
 import torch
-from typing import Dict, Any, List, Tuple
+from typing import Dict, Any, List, Optional, Tuple
 from .models.stgnn import SpatioTemporalGNN
 from .graph_builder import HydrogeologicalGraph
 
 
 class GroundwaterForecaster:
-    """End-to-end inference and scenario simulation engine."""
+    """End-to-end inference and scenario simulation engine with physically grounded scaling."""
     def __init__(
         self,
         model: SpatioTemporalGNN,
         graph: HydrogeologicalGraph,
         target_mean: float,
         target_std: float,
+        feature_means: Optional[np.ndarray] = None,
+        feature_stds: Optional[np.ndarray] = None,
+        scaler: Optional[Dict[str, Any]] = None,
         device: str = "cpu"
     ):
         self.device = torch.device(device)
         self.model = model.to(self.device).eval()
         self.graph = graph
         self.torch_graph = graph.get_torch_graph(self.device)
-        self.target_mean = target_mean
-        self.target_std = target_std
         self.districts = graph.districts
         self.num_nodes = len(self.districts)
+
+        if scaler is not None:
+            self.feature_means = np.array(scaler["means"], dtype=np.float32)
+            self.feature_stds = np.array(scaler["stds"], dtype=np.float32)
+            self.target_mean = float(self.feature_means[0])
+            self.target_std = float(self.feature_stds[0])
+        else:
+            self.target_mean = target_mean
+            self.target_std = target_std
+            self.feature_means = feature_means
+            self.feature_stds = feature_stds
 
     def predict_next_30_days(
         self,
@@ -44,11 +56,21 @@ class GroundwaterForecaster:
         rainfall_modifier: scalar e.g. 0.65 for drought, 1.4 for surplus
         extraction_modifier: scalar e.g. 1.2 for heavy pumping
         """
-        # Apply scenario modification to features if simulated
         inp = last_window_norm.copy()
-        # feature index 2 is rainfall_mm, 1 is insar_subsidence_mm
-        inp[:, :, 2] *= rainfall_modifier
-        inp[:, :, 1] *= extraction_modifier
+
+        # Apply physically grounded scenario modification on unscaled units before re-normalizing
+        if self.feature_means is not None and self.feature_stds is not None:
+            if rainfall_modifier != 1.0:
+                rf_m, rf_s = self.feature_means[2], self.feature_stds[2]
+                rf_phys = np.clip(inp[:, :, 2] * rf_s + rf_m, a_min=0.0, a_max=None)
+                rf_phys_mod = np.clip(rf_phys * rainfall_modifier, a_min=0.0, a_max=None)
+                inp[:, :, 2] = (rf_phys_mod - rf_m) / (rf_s + 1e-8)
+
+            if extraction_modifier != 1.0:
+                sub_m, sub_s = self.feature_means[1], self.feature_stds[1]
+                sub_phys = inp[:, :, 1] * sub_s + sub_m
+                sub_phys_mod = sub_phys * extraction_modifier
+                inp[:, :, 1] = (sub_phys_mod - sub_m) / (sub_s + 1e-8)
 
         # Expand batch dim: [1, T_in, N, F]
         x_tensor = torch.tensor(inp, dtype=torch.float32).unsqueeze(0).to(self.device)
@@ -71,7 +93,7 @@ class GroundwaterForecaster:
             d30_d = float(traj[-1])
             net_change = d30_d - cur_d  # positive = water table falling deeper (bad)
 
-            # CGWB Risk Classification
+            # Statutory CGWB Risk Classification
             risk_category, risk_color, advisory = self._classify_risk(
                 d["extraction_stage_percent"], cur_d, net_change
             )
@@ -99,28 +121,34 @@ class GroundwaterForecaster:
         }
 
     def _classify_risk(self, stage: float, depth: float, change: float) -> Tuple[str, str, str]:
-        """Classifies district into CGWB vulnerability categories."""
-        if stage > 200 or depth > 35.0 or change > 0.35:
+        """
+        Classifies district into statutory CGWB vulnerability categories:
+        - Over-Exploited: Stage of Extraction > 100% or severe drawdown depth/rate
+        - Critical: Stage of Extraction 90% - 100%
+        - Semi-Critical: Stage of Extraction 70% - 90%
+        - Safe: Stage of Extraction <= 70%
+        """
+        if stage > 100.0 or depth > 30.0 or change > 0.30:
             return (
                 "Over-Exploited",
                 "#d90429",  # Red
-                "CRITICAL ALERT: Severe aquifer drawdown detected. Strictly regulate tubewell pumping and transition to micro-irrigation immediately."
+                "CRITICAL ALERT: Statutory CGWB Over-Exploited status (extraction exceeds 100% of annual recharge). Strictly regulate tubewell pumping and transition to micro-irrigation immediately."
             )
-        elif stage >= 100 or depth > 25.0 or change > 0.15:
+        elif stage >= 90.0 or depth > 22.0 or change > 0.15:
             return (
                 "Critical",
                 "#f77f00",  # Orange
-                "WARNING: Water extraction exceeds recharge capacity. Implement artificial recharge structures and canal-water blending."
+                "WARNING: Statutory CGWB Critical category (extraction 90-100% of recharge). Implement artificial recharge structures and canal-water blending."
             )
-        elif stage >= 70 or depth > 18.0:
+        elif stage >= 70.0 or depth > 16.0 or change > 0.05:
             return (
                 "Semi-Critical",
                 "#fcbf49",  # Yellow
-                "CAUTION: Water table approaching stress threshold. Promote crop diversification away from water-intensive paddy."
+                "CAUTION: Statutory CGWB Semi-Critical category (extraction 70-90% of recharge). Promote crop diversification away from water-intensive paddy."
             )
         else:
             return (
                 "Safe",
                 "#2a9d8f",  # Green
-                "STABLE: Aquifer levels within sustainable limits. Maintain regular monitoring."
+                "STABLE: Statutory CGWB Safe category (extraction <= 70% of recharge). Aquifer levels within sustainable limits."
             )

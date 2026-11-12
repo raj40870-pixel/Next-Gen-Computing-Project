@@ -82,19 +82,34 @@ class ModelEvaluator:
 
     def generate_benchmark_summary(self, results: Dict[str, Dict[str, Any]]) -> pd.DataFrame:
         """
-        Formats comparative results into a clean presentation dataframe.
+        Formats comparative results into a clean presentation dataframe
+        with genuine dynamically computed improvement metrics.
         """
         rows = []
+        stgnn_rmse = None
+        for name in ["ST-GNN (Ours)", "ST-GNN"]:
+            if name in results:
+                stgnn_rmse = results[name]["overall"]["rmse"]
+                break
+
         for model_name, res in results.items():
             overall = res["overall"]
+            m_rmse = overall["rmse"]
+            if stgnn_rmse is not None and model_name in ["ST-GNN (Ours)", "ST-GNN"]:
+                imp_str = "Reference (Ours)"
+            elif stgnn_rmse is not None and m_rmse > 0:
+                imp = ((m_rmse - stgnn_rmse) / m_rmse) * 100.0
+                imp_str = f"+{imp:.1f}% error reduction" if imp > 0 else f"{imp:.1f}%"
+            else:
+                imp_str = "—"
+
             rows.append({
                 "Model": model_name,
                 "RMSE (meters)": f"{overall['rmse']:.3f}",
                 "MAE (meters)": f"{overall['mae']:.3f}",
                 "R² Score": f"{overall['r2']:.3f}",
-                "Improvement over Baseline (%)": "—"
+                "Improvement by ST-GNN": imp_str
             })
 
         df = pd.DataFrame(rows)
-        # Calculate percentage improvement of ST-GNN relative to worst baseline if available
         return df

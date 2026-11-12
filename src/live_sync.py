@@ -1,8 +1,13 @@
 """
-Real-Time Satellite Data Ingestion and Live Forecasting Engine
-Connects to live satellite APIs (Open-Meteo, NASA POWER, ESA Copernicus),
-ingests incoming precipitation and surface observations for all 15 districts,
-and triggers real-time ST-GNN model predictions.
+Real-Time Environmental Data Ingestion and Live Forecasting Engine
+Connects to the Open-Meteo API for real-time weather and evapotranspiration data.
+Integrates observations into the calibrated spatio-temporal pipeline and triggers ST-GNN predictions.
+
+Scientific Provenance & Status:
+- Open-Meteo API: Live real-time observation (precipitation, reference ET0, temperature)
+- Sentinel-1 InSAR Deformation: Calibrated PS-InSAR literature baseline (Demonstration-Only;
+  real-time automated InSAR requires heavy SAR phase interferometry processing pipelines)
+- CGWB Piezometer Telemetry: Benchmark reference baseline (Live API unavailable without India-WRIS credentials)
 """
 
 import os
@@ -22,18 +27,20 @@ import torch
 from src.models.stgnn import SpatioTemporalGNN
 from src.graph_builder import HydrogeologicalGraph
 from src.forecaster import GroundwaterForecaster
+from src.trainer import STGNNTrainer
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 CONFIG_PATH = os.path.join(BASE_DIR, "config", "api_config.json")
 GEO_PATH = os.path.join(BASE_DIR, "data", "geo", "punjab_haryana_districts.json")
 RAW_DATA_PATH = os.path.join(BASE_DIR, "data", "raw", "fused_groundwater_timeseries_2017_2024.csv")
+SCALER_PATH = os.path.join(BASE_DIR, "data", "processed", "scaler.json")
 FORECAST_PATH = os.path.join(BASE_DIR, "data", "processed", "latest_forecast.json")
 SYNC_STATUS_PATH = os.path.join(BASE_DIR, "data", "processed", "sync_status.json")
 CHECKPOINT_PATH = os.path.join(BASE_DIR, "checkpoints", "best_stgnn.pt")
 
 
 class LiveSatelliteSync:
-    """Manages real-time satellite API polling, database appending, and live inference."""
+    """Manages real-time environmental data polling and honest model execution."""
     def __init__(self, config_path: str = CONFIG_PATH):
         self.config_path = config_path
         self.config = self._load_config()
@@ -47,8 +54,8 @@ class LiveSatelliteSync:
             "auto_sync_enabled": True,
             "sync_interval_hours": 24,
             "open_meteo": {"enabled": True},
-            "nasa_power": {"enabled": True},
-            "copernicus_cdse": {"enabled": True, "client_id": "", "client_secret": ""}
+            "sentinel1_cdse": {"enabled": False, "status": "Demonstration (Requires SAR Interferometry Engine)"},
+            "cgwb_telemetry": {"enabled": False, "status": "Demonstration (Requires India-WRIS credentials)"}
         }
 
     def _save_config(self):
@@ -62,8 +69,8 @@ class LiveSatelliteSync:
 
     def fetch_live_satellite_weather(self, lat: float, lon: float, past_days: int = 7) -> Dict[str, Any]:
         """
-        Queries Open-Meteo real-time satellite / reanalysis API.
-        Extracts daily precipitation (mm) and FAO reference evapotranspiration (mm).
+        Queries Open-Meteo real-time weather API for observed precipitation and reference ET0.
+        Variables received: precipitation_sum (mm), et0_fao_evapotranspiration (mm), temperature_2m_mean (C).
         """
         url = "https://api.open-meteo.com/v1/forecast"
         params = {
@@ -84,36 +91,35 @@ class LiveSatelliteSync:
                 et = daily.get("et0_fao_evapotranspiration", [])
                 temp = daily.get("temperature_2m_mean", [])
                 return {
-                    "status": "success",
-                    "source": "Open-Meteo Satellite API",
+                    "status": "LIVE_SUCCESS",
+                    "source": "Open-Meteo API (Live Telemetry)",
                     "dates": dates,
                     "rainfall_mm": [float(p) if p is not None else 0.0 for p in precip],
                     "et_mm": [float(e) if e is not None else 3.5 for e in et],
                     "temp_c": [float(t) if t is not None else 28.0 for t in temp]
                 }
         except Exception as e:
-            # Fallback if internet connectivity is slow
             pass
 
-        # Robust Fallback using local calibrated seasonal model if offline
+        # Honest fallback when internet is unavailable: mark status as cached/simulated
         today = datetime.now()
         dates = [(today - timedelta(days=i)).strftime("%Y-%m-%d") for i in range(past_days, -1, -1)]
         return {
-            "status": "cached_offline",
-            "source": "Offline Calibrated Satellite Stream",
+            "status": "OFFLINE_CACHED",
+            "source": "Local Calibrated Seasonal Baseline (Offline Fallback)",
             "dates": dates,
-            "rainfall_mm": [max(0.0, float(np.random.exponential(1.5))) for _ in dates],
-            "et_mm": [float(3.2 + np.random.normal(0, 0.4)) for _ in dates],
-            "temp_c": [float(29.0 + np.random.normal(0, 1.2)) for _ in dates]
+            "rainfall_mm": [0.0 for _ in dates],
+            "et_mm": [3.2 for _ in dates],
+            "temp_c": [28.5 for _ in dates]
         }
 
     def sync_all_districts(self) -> Dict[str, Any]:
         """
-        Fetches live satellite telemetry for all monitoring district stations in parallel,
-        updates the database, and executes live ST-GNN prediction.
+        Fetches live weather telemetry for all 15 districts in parallel,
+        records observations, and executes live ST-GNN inference.
         """
         from concurrent.futures import ThreadPoolExecutor
-        print(f"[*] Initiating real-time satellite sync across {len(self.districts)} stations in parallel...")
+        print(f"[*] Ingesting environmental telemetry across {len(self.districts)} districts...")
         sync_timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         def _fetch_node_telemetry(d):
@@ -122,21 +128,13 @@ class LiveSatelliteSync:
             lat = d["lat"]
             lon = d["lon"]
 
-            # Pull live satellite data
             weather_data = self.fetch_live_satellite_weather(lat, lon, past_days=5)
             recent_rain = weather_data["rainfall_mm"][-1] if weather_data["rainfall_mm"] else 0.0
             recent_et = weather_data["et_mm"][-1] if weather_data["et_mm"] else 3.5
 
-            # Calculate Sentinel-1 InSAR subsidence rate update
+            # Calibrated baseline subsidence rate
             daily_subsidence_delta = (d.get("mean_subsidence_mm_yr", -15.0) / 365.25)
-            # Heavy rain causes minor elastic rebound
-            elastic_rebound = 0.05 * recent_rain
-            adjusted_subsidence_delta = daily_subsidence_delta + elastic_rebound
-
-            cgwb_id = f"CGWB-{d['state'][:2].upper()}-{d_name[:3].upper()}-{d_id:03d}"
-            track_num = 107 if lat > 30.5 else 136
-            pass_num = 49280 + (d_id % 15)
-            sounder_m = round(d.get("baseline_depth_m", 28.5), 2)
+            adjusted_subsidence_delta = daily_subsidence_delta + 0.05 * recent_rain
 
             return {
                 "district_id": d_id,
@@ -144,33 +142,32 @@ class LiveSatelliteSync:
                 "state": d["state"],
                 "lat": lat,
                 "lon": lon,
-                "cgwb_station_id": cgwb_id,
-                "cgwb_sensor_type": "Digital Water Level Recorder (DWLR Piezometer)",
-                "field_sounder_tape_reading_m": sounder_m,
-                "sentinel1_orbit_pass": f"S1-C-band Track {track_num} Pass #{pass_num}",
-                "radar_frequency": "5.405 GHz (C-band SAR)",
+                "weather_api_status": weather_data["status"],
+                "weather_source": weather_data["source"],
                 "live_rainfall_mm": round(recent_rain, 2),
                 "live_et_mm": round(recent_et, 2),
+                "insar_source": "Calibrated PS-InSAR Literature Baseline (Demonstration)",
                 "live_insar_delta_mm": round(adjusted_subsidence_delta, 3),
-                "satellite_status": "ONLINE (Connected)",
-                "data_source": weather_data["source"],
+                "cgwb_source": "CGWB Historical Monitoring Well Baseline (Demonstration)",
                 "last_observation_date": weather_data["dates"][-1] if weather_data["dates"] else sync_timestamp
             }
 
-        with ThreadPoolExecutor(max_workers=20) as executor:
+        with ThreadPoolExecutor(max_workers=15) as executor:
             telemetry_records = list(executor.map(_fetch_node_telemetry, self.districts))
 
         total_precip_collected = sum(r["live_rainfall_mm"] for r in telemetry_records)
+        live_count = sum(1 for r in telemetry_records if r["weather_api_status"] == "LIVE_SUCCESS")
 
-        # Run Live ST-GNN Model Inference on latest data
-        print("[*] Running live ST-GNN forward pass on updated satellite data...")
+        # Run Live ST-GNN Model Inference
+        print("[*] Running live ST-GNN forward pass on updated telemetry...")
         prediction_results = self._run_live_inference(telemetry_records)
 
         # Save Sync Status
         sync_summary = {
             "last_sync_timestamp": sync_timestamp,
-            "sync_status": "SUCCESS",
+            "sync_status": "SUCCESS" if live_count > 0 else "OFFLINE_FALLBACK",
             "active_nodes_synced": len(self.districts),
+            "live_weather_nodes": live_count,
             "total_rainfall_monitored_mm": round(total_precip_collected, 2),
             "telemetry": telemetry_records,
             "prediction_summary": prediction_results
@@ -185,26 +182,31 @@ class LiveSatelliteSync:
         self.config["records_synced_count"] = self.config.get("records_synced_count", 0) + len(telemetry_records)
         self._save_config()
 
-        print(f"[+] Real-time satellite synchronization completed at {sync_timestamp}!")
+        print(f"[+] Environmental synchronization completed at {sync_timestamp} ({live_count}/{len(self.districts)} live nodes).")
         return sync_summary
 
     def _run_live_inference(self, telemetry_records: List[Dict[str, Any]]) -> Dict[str, Any]:
         graph = HydrogeologicalGraph()
-        t_graph = graph.get_torch_graph()
         num_nodes = len(self.districts)
 
-        # Load trained ST-GNN model
-        model = SpatioTemporalGNN(num_nodes=num_nodes, num_features=4, seq_len_in=30, seq_len_out=30)
-        if os.path.exists(CHECKPOINT_PATH):
-            ckpt = torch.load(CHECKPOINT_PATH, map_location="cpu")
-            # Load weights if compatible
-            try:
-                model.load_state_dict(ckpt["model_state_dict"])
-            except Exception:
-                pass
-        model.eval()
+        # Load scaler metadata
+        scaler = None
+        if os.path.exists(SCALER_PATH):
+            with open(SCALER_PATH, "r", encoding="utf-8") as f:
+                scaler = json.load(f)
+            means = np.array(scaler["means"], dtype=np.float32)
+            stds = np.array(scaler["stds"], dtype=np.float32)
+        else:
+            means = np.array([24.0, -18.0, 2.5, 3.5], dtype=np.float32)
+            stds = np.array([6.5, 7.0, 4.0, 1.2], dtype=np.float32)
 
-        # Load latest historical data slice (fast recent tail)
+        # Load trained ST-GNN model with strict validation
+        if not os.path.exists(CHECKPOINT_PATH):
+            raise FileNotFoundError(f"Model checkpoint not found at {CHECKPOINT_PATH}. Run training pipeline first.")
+
+        model, ckpt = STGNNTrainer.load_checkpoint(CHECKPOINT_PATH, device="cpu")
+
+        # Load latest historical data slice
         if os.path.exists(RAW_DATA_PATH):
             df_hist = pd.read_csv(RAW_DATA_PATH, parse_dates=["date"])
             max_dt = df_hist["date"].max()
@@ -223,31 +225,29 @@ class LiveSatelliteSync:
         # Stack into [30, 15, 4]
         tensor_30d = np.stack(pivots, axis=-1).astype(np.float32)
 
-        # Normalize with dataset statistics
-        target_mean = float(np.mean(tensor_30d[:, :, 0]))
-        target_std = float(np.std(tensor_30d[:, :, 0])) + 1e-5
-        norm_tensor = (tensor_30d - np.mean(tensor_30d, axis=(0, 1), keepdims=True)) / (
-            np.std(tensor_30d, axis=(0, 1), keepdims=True) + 1e-5
-        )
+        # Correctly normalize using the training scaler
+        norm_tensor = (tensor_30d - means.reshape(1, 1, -1)) / (stds.reshape(1, 1, -1) + 1e-8)
 
-        # Integrate the latest real-time satellite telemetry into the last time step
+        # Integrate the latest real-time telemetry into the last timestep using proper scaling
         for rec in telemetry_records:
             nid = rec["district_id"]
-            # update rainfall and ET with live observation
-            norm_tensor[-1, nid, 2] = rec["live_rainfall_mm"]
-            norm_tensor[-1, nid, 3] = rec["live_et_mm"]
+            # Scale physical mm to z-score before insertion
+            norm_tensor[-1, nid, 2] = (rec["live_rainfall_mm"] - means[2]) / (stds[2] + 1e-8)
+            norm_tensor[-1, nid, 3] = (rec["live_et_mm"] - means[3]) / (stds[3] + 1e-8)
 
         forecaster = GroundwaterForecaster(
             model=model,
             graph=graph,
-            target_mean=target_mean,
-            target_std=target_std,
+            target_mean=float(means[0]),
+            target_std=float(stds[0]),
+            scaler=scaler,
             device="cpu"
         )
 
         latest_fc = forecaster.predict_next_30_days(norm_tensor)
 
-        # Persist updated forecast to data/processed/latest_forecast.json
+        # Persist updated forecast
+        os.makedirs(os.path.dirname(FORECAST_PATH), exist_ok=True)
         with open(FORECAST_PATH, "w", encoding="utf-8") as f:
             json.dump(latest_fc, f, indent=2)
 
@@ -262,8 +262,7 @@ class LiveSatelliteSync:
 
     def check_and_auto_sync(self, max_age_hours: float = 24.0) -> bool:
         """
-        Autonomous check: executes sync across all stations if last sync is older than max_age_hours.
-        Returns True if sync was performed, False otherwise.
+        Autonomous check: executes sync if last sync is older than max_age_hours.
         """
         last_t_str = self.config.get("last_sync_timestamp")
         needs_sync = False
@@ -278,7 +277,7 @@ class LiveSatelliteSync:
                 needs_sync = True
 
         if needs_sync:
-            print(f"[!] Autonomous trigger: Last sync ({last_t_str}) is older than {max_age_hours}h. Syncing...")
+            print(f"[!] Triggering sync: Last sync ({last_t_str}) is older than {max_age_hours}h.")
             self.sync_all_districts()
             return True
         return False
@@ -288,8 +287,7 @@ _BACKGROUND_DAEMON_STARTED = False
 
 def start_autonomous_background_daemon(sync_interval_hours: float = 24.0, check_loop_seconds: int = 1800):
     """
-    Spawns an autonomous daemon thread that runs 24/7 in the background,
-    checking every 30 minutes and ingesting live satellite passes when 24h have elapsed.
+    Spawns background sync daemon thread.
     """
     global _BACKGROUND_DAEMON_STARTED
     if _BACKGROUND_DAEMON_STARTED:
@@ -302,13 +300,13 @@ def start_autonomous_background_daemon(sync_interval_hours: float = 24.0, check_
             try:
                 syncer.check_and_auto_sync(max_age_hours=sync_interval_hours)
             except Exception as e:
-                print(f"[!] Autonomous background daemon sync error: {e}")
+                print(f"[!] Background sync daemon warning: {e}")
             time.sleep(check_loop_seconds)
 
     t = threading.Thread(target=_daemon_worker, daemon=True, name="Groundwater-Autonomous-Daemon")
     t.start()
     _BACKGROUND_DAEMON_STARTED = True
-    print("[+] Autonomous 24-Hour Satellite Background Daemon initialized successfully!")
+    print("[+] Environmental Background Synchronization Daemon initialized successfully.")
 
 
 if __name__ == "__main__":

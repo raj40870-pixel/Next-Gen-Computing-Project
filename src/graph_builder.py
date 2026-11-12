@@ -1,8 +1,11 @@
 """
-Hydrogeological Graph Builder Module
+Spatial Proximity Graph Builder Module
 Constructs spatial adjacency matrices and graph representations for 15 districts
-across Punjab and Haryana using geographical coordinates, aquifer connectivity,
-and Gaussian distance thresholding.
+across Punjab and Haryana using geographic centroid coordinates and Gaussian distance decay.
+
+Scientific Note:
+Graph edges represent spatial distance proximity (regional hydro-climatic correlation
+across the Indo-Gangetic alluvial plains), NOT direct subsurface hydraulic fracture or channel connectivity.
 """
 
 import json

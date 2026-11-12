@@ -1,0 +1,24 @@
+{
+  "means": [
+    28.113988876342773,
+    -48.95631790161133,
+    3.1441102027893066,
+    4.160497665405273
+  ],
+  "stds": [
+    13.290433883666992,
+    39.98956298828125,
+    10.06656551361084,
+    2.397411823272705
+  ],
+  "feature_cols": [
+    "water_depth_mbgl",
+    "insar_subsidence_mm",
+    "rainfall_mm",
+    "evapotranspiration_mm"
+  ],
+  "target_col": "water_depth_mbgl",
+  "target_idx": 0,
+  "target_mean": 28.113988876342773,
+  "target_std": 13.290433883666992
+}

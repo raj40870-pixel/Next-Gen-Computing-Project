@@ -1,20 +1,20 @@
 """
 Spatio-Temporal Graph Neural Network (ST-GNN) Architecture
-Designed for Groundwater Depletion Forecasting fusing InSAR deformation and rainfall.
-Incorporates Spatial Graph Convolutions (spatial aquifer connectivity)
-and Gated Temporal Convolutions (seasonal recharge lag and depletion dynamics).
+Designed for Groundwater Depletion Forecasting fusing InSAR deformation, rainfall, and hydrologic state.
+Combines 1st-order Spatial Graph Convolutions (Kipf & Welling GCN formulation)
+and Strictly Causal Temporal Gated Convolutions (GLU-style).
 """
 
 import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from typing import Tuple
+from typing import Dict, Any, Tuple
 
 
 class SpatialGraphConv(nn.Module):
     """
-    Spatial Graph Convolution layer based on Kipf & Welling / Chebyshev formulation.
+    Spatial Graph Convolution layer (1st-order localized spectral GCN, Kipf & Welling 2017).
     Computes H' = A_norm @ H @ W + b
     Input shape:  [B, T, N, C_in]
     Output shape: [B, T, N, C_out]
@@ -40,16 +40,14 @@ class SpatialGraphConv(nn.Module):
     def forward(self, x: torch.Tensor, adj: torch.Tensor) -> torch.Tensor:
         """
         x:   [B, T, N, C_in]
-        adj: [N, N] normalized adjacency matrix
+        adj: [N, N] normalized spatial adjacency matrix
         """
         B, T, N, C = x.shape
         # Linear projection: [B, T, N, C_in] @ [C_in, C_out] -> [B, T, N, C_out]
         support = torch.matmul(x, self.weight)
         
         # Graph convolution: A @ support across node dimension N
-        # We can permute to [B, T, C_out, N] or use einsum
-        # einsum: 'nm, btmf -> btnf'
-        out = torch.einsum("nm,btmf->btnf", adj, support)
+        out = torch.matmul(adj, support)
         
         if self.bias is not None:
             out = out + self.bias
@@ -58,10 +56,11 @@ class SpatialGraphConv(nn.Module):
 
 class TemporalGatedConv(nn.Module):
     """
-    Temporal Gated Convolutional Layer (GLU style)
-    Applies 1D causal / dilated convolution along the time axis.
+    Strictly Causal Temporal Gated Convolutional Layer (GLU style).
+    Pads strictly on the left (past timesteps) by (kernel_size - 1) with zero right padding,
+    guaranteeing zero future-information leakage.
     Input shape:  [B, T, N, C_in]
-    Output shape: [B, T', N, C_out]
+    Output shape: [B, T, N, C_out]
     """
     def __init__(self, in_channels: int, out_channels: int, kernel_size: int = 3):
         super().__init__()
@@ -70,7 +69,7 @@ class TemporalGatedConv(nn.Module):
             in_channels=in_channels,
             out_channels=2 * out_channels,  # split into filter and gate
             kernel_size=(kernel_size, 1),
-            padding=(kernel_size - 1, 0)  # causal padding
+            padding=0  # Left padding handled explicitly in forward() to ensure strict causality
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
@@ -80,9 +79,13 @@ class TemporalGatedConv(nn.Module):
         """
         B, T, N, C = x.shape
         x_perm = x.permute(0, 3, 1, 2)  # [B, C, T, N]
-        conv_out = self.conv(x_perm)     # [B, 2*C_out, T + K - 1, N]
-        # Slice causal padding to keep length T
-        conv_out = conv_out[:, :, :T, :]
+        
+        # Explicit causal left padding: pad (left, right, top, bottom) = (0, 0, kernel_size - 1, 0)
+        # Top represents earlier time steps; bottom represents future time steps.
+        # Zero padding at bottom ensures no future timesteps enter the receptive field.
+        x_padded = F.pad(x_perm, (0, 0, self.kernel_size - 1, 0))
+        
+        conv_out = self.conv(x_padded)  # [B, 2*C_out, T, N]
         
         # Gated Linear Unit (GLU): P * sigmoid(Q)
         P, Q = torch.chunk(conv_out, 2, dim=1)
@@ -161,6 +164,10 @@ class SpatioTemporalGNN(nn.Module):
         self.num_features = num_features
         self.seq_len_in = seq_len_in
         self.seq_len_out = seq_len_out
+        self.hidden_dim = hidden_dim
+        self.num_blocks = num_blocks
+        self.kernel_size = kernel_size
+        self.dropout_rate = dropout
 
         # Input feature embedding
         self.feature_embed = nn.Linear(num_features, hidden_dim)
@@ -194,13 +201,13 @@ class SpatioTemporalGNN(nn.Module):
 
     def forward(self, x: torch.Tensor, adj: torch.Tensor) -> torch.Tensor:
         """
-        x:   [B, T_in, N, F]
+        x:   [B, T_in, N, C]
         adj: [N, N]
         return: [B, T_out, N]
         """
-        B, T, N, F = x.shape
+        B, T, N, C = x.shape
         
-        # 1. Feature embedding: [B, T, N, F] -> [B, T, N, hidden_dim]
+        # 1. Feature embedding: [B, T, N, C] -> [B, T, N, hidden_dim]
         h = self.feature_embed(x)
         
         # 2. Pass through Spatio-Temporal Blocks
@@ -217,17 +224,30 @@ class SpatioTemporalGNN(nn.Module):
         out = self.regressor(h).squeeze(-1)
         return out
 
+    def get_config(self) -> Dict[str, Any]:
+        """Returns architecture configuration for reproducible checkpoint persistence."""
+        return {
+            "num_nodes": self.num_nodes,
+            "num_features": self.num_features,
+            "seq_len_in": self.seq_len_in,
+            "seq_len_out": self.seq_len_out,
+            "hidden_dim": self.hidden_dim,
+            "num_blocks": self.num_blocks,
+            "kernel_size": self.kernel_size,
+            "dropout": self.dropout_rate,
+        }
+
 
 if __name__ == "__main__":
     print("Testing SpatioTemporalGNN architecture...")
-    B, T_in, N, F, T_out = 4, 30, 15, 4, 30
-    dummy_x = torch.randn(B, T_in, N, F)
-    dummy_adj = torch.eye(N)
+    b_sz, t_in, n_nodes, num_feats, t_out = 4, 30, 15, 4, 30
+    dummy_x = torch.randn(b_sz, t_in, n_nodes, num_feats)
+    dummy_adj = torch.eye(n_nodes)
     
-    model = SpatioTemporalGNN(num_nodes=N, num_features=F, seq_len_in=T_in, seq_len_out=T_out)
+    model = SpatioTemporalGNN(num_nodes=n_nodes, num_features=num_feats, seq_len_in=t_in, seq_len_out=t_out)
     pred = model(dummy_x, dummy_adj)
     print(f"Input shape: {dummy_x.shape}")
     print(f"Output shape: {pred.shape}")
     print(f"Total trainable parameters: {sum(p.numel() for p in model.parameters() if p.requires_grad):,}")
-    assert pred.shape == (B, T_out, N), "Output shape mismatch!"
+    assert pred.shape == (b_sz, t_out, n_nodes), "Output shape mismatch!"
     print("Architecture verified successfully!")
