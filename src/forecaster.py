@@ -35,10 +35,17 @@ class GroundwaterForecaster:
         self.num_nodes = len(self.districts)
 
         if scaler is not None:
-            self.feature_means = np.array(scaler["means"], dtype=np.float32)
-            self.feature_stds = np.array(scaler["stds"], dtype=np.float32)
-            self.target_mean = float(self.feature_means[0])
-            self.target_std = float(self.feature_stds[0])
+            s_dict = scaler.get("scaler", scaler) if isinstance(scaler, dict) else scaler
+            if isinstance(s_dict, dict) and "means" in s_dict:
+                self.feature_means = np.array(s_dict["means"], dtype=np.float32)
+                self.feature_stds = np.array(s_dict["stds"], dtype=np.float32)
+                self.target_mean = float(self.feature_means[0])
+                self.target_std = float(self.feature_stds[0])
+            else:
+                self.target_mean = target_mean
+                self.target_std = target_std
+                self.feature_means = feature_means
+                self.feature_stds = feature_stds
         else:
             self.target_mean = target_mean
             self.target_std = target_std
