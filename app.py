@@ -932,11 +932,6 @@ if menu_choice == "🔄 Live Satellite Sync Hub":
         last_t = sync_info.get("last_sync_timestamp", "Recent") if sync_info else "Recent"
         st.metric("Last Synchronization", last_t, "Autonomous Telemetry")
 
-    st.info(
-        "ℹ️ **Data Stream Provenance Note:** Live real-time ingestion is active for meteorological variables (precipitation, evapotranspiration, temperature) via Open-Meteo API. "
-        "Sentinel-1 InSAR land subsidence and CGWB piezometer levels utilize calibrated baseline datasets based on peer-reviewed surveys and official hydrograph records (real-time automated SAR phase interferometry requires specialized processing pipelines and India-WRIS credentials)."
-    )
-
     st.divider()
 
     # Real-Time Telemetry Graph
@@ -987,19 +982,6 @@ if menu_choice == "🔄 Live Satellite Sync Hub":
         st.dataframe(df_show[display_cols].rename(columns=col_names), use_container_width=True)
     else:
         st.info("Click 'Sync Live Satellite Data Now' above to pull the latest telemetry records.")
-
-    # Live Alerts Based on Latest Sync
-    st.markdown("### 🚨 Live Regional Aquifer Stress Alerts")
-    if sync_info and "prediction_summary" in sync_info:
-        ps = sync_info["prediction_summary"]
-        crit_dists = ps.get("critical_districts", [])
-        if crit_dists:
-            st.warning(
-                f"⚠️ **High Drawdown Warning:** {len(crit_dists)} districts across India are currently classified in Critical / Over-Exploited condition based on recent satellite observations: "
-                + ", ".join(crit_dists[:12]) + "..."
-            )
-        else:
-            st.success("All monitoring stations operating within safe aquifer extraction margins.")
 
 
 # -------------------------------------------------------------
@@ -1272,12 +1254,6 @@ elif menu_choice == "📈 30-Day Forecast Explorer":
     with c4:
         st.metric("CGWB Classification", selected_dist["cgwb_status"], f"Stage: {selected_dist['extraction_stage_percent']}%")
 
-    # Advisory Banner
-    if selected_dist["cgwb_status"] in ["Critical", "Over-Exploited"]:
-        st.error(f"🚨 **Advisory for {sel_name} ({selected_dist['state']}):** Severe aquifer stress detected. Groundwater extraction exceeds recharge. Transition to micro-irrigation and enforce tubewell metering.")
-    else:
-        st.success(f"✅ **Advisory for {sel_name} ({selected_dist['state']}):** Aquifer operates within sustainable recharge thresholds. Continue standard hydrological monitoring.")
-
     # -------------------------------------------------------------
     # Graph 1: Main 30-Day Forecast Curve with Confidence Ribbon
     # -------------------------------------------------------------
@@ -1533,11 +1509,6 @@ elif menu_choice == "📊 Model Benchmarking Lab":
         st.markdown("### Metrics Comparison Table")
         st.dataframe(df_b.style.highlight_min(subset=["RMSE (meters)", "MAE (meters)"], color="#dcfce7")
                                .highlight_max(subset=["R² Score"], color="#dcfce7"), use_container_width=True)
-
-        st.success(
-            f"✅ **Requirement Target Verified:** ST-GNN achieves **RMSE = {stgnn_rmse_val:.3f} m** on the 30-day forecast horizon, "
-            "successfully satisfying the project accuracy threshold of **RMSE < 0.50 m** on independent test evaluations."
-        )
 
     with c_b2:
         fig_metrics = px.bar(
